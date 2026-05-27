@@ -9,24 +9,24 @@
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="#web-video-presentation"><img src="./dist/imgs/web-video-presentation-skill.png" alt="Web Video Presentation Skill" width="100%"></a>
+<a href="#web-video-presentation"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video-presentation-skill.webp" alt="Web Video Presentation Skill" width="100%"></a>
 <br/><a href="#web-video-presentation"><strong>web-video-presentation</strong></a>
 <br/><sub>Web video / presentation</sub>
 </td>
 <td width="50%" valign="top">
-<a href="#web-design-engineer"><img src="./dist/imgs/web-design-skill.png" alt="Web Design Skill" width="100%"></a>
+<a href="#web-design-engineer"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp" alt="Web Design Skill" width="100%"></a>
 <br/><a href="#web-design-engineer"><strong>web-design-engineer</strong></a>
 <br/><sub>Design / frontend</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="#gpt-image-2"><img src="./dist/imgs/gpt-image-2-skill.png" alt="GPT Image 2 Skill" width="100%"></a>
+<a href="#gpt-image-2"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/gpt-image-2-skill.webp" alt="GPT Image 2 Skill" width="100%"></a>
 <br/><a href="#gpt-image-2"><strong>gpt-image-2</strong></a>
 <br/><sub>Image generation / prompting</sub>
 </td>
 <td width="50%" valign="top">
-<a href="#kb-retriever"><img src="./dist/imgs/kb-retriever-skill.png" alt="KB Retriever Skill" width="100%"></a>
+<a href="#kb-retriever"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/kb-retriever-skill.webp" alt="KB Retriever Skill" width="100%"></a>
 <br/><a href="#kb-retriever"><strong>kb-retriever</strong></a>
 <br/><sub>Local knowledge retrieval</sub>
 </td>
@@ -55,7 +55,7 @@
 
 ### [`web-video-presentation`](./skills/web-video-presentation)
 
-![Web Video Presentation Skill](./dist/imgs/web-video-presentation-skill.png)
+![Web Video Presentation Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video-presentation-skill.webp)
 
 **Category:** Web Video / Presentation Engineering  
 **Best for:** turning scripts, articles, lessons, product demos, and talks into click-driven 16:9 web presentations that can be screen-recorded as cinematic videos.
@@ -74,14 +74,14 @@ Highlights:
 
 <table>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/creative-voltage.png" alt="creative-voltage preview" /></a><br /><sub><code>creative-voltage</code><br />creative talks</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/blueprint.png" alt="blueprint preview" /></a><br /><sub><code>blueprint</code><br />tech architecture</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/swiss-ikb.png" alt="swiss-ikb preview" /></a><br /><sub><code>swiss-ikb</code><br />data reports</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/chalk-garden.png" alt="chalk-garden preview" /></a><br /><sub><code>chalk-garden</code><br />popular science</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/creative-voltage.webp" alt="creative-voltage preview" /></a><br /><sub><code>creative-voltage</code><br />creative talks</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/blueprint.webp" alt="blueprint preview" /></a><br /><sub><code>blueprint</code><br />tech architecture</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/swiss-ikb.webp" alt="swiss-ikb preview" /></a><br /><sub><code>swiss-ikb</code><br />data reports</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/chalk-garden.webp" alt="chalk-garden preview" /></a><br /><sub><code>chalk-garden</code><br />popular science</sub></td>
 </tr>
 </table>
 
-<a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/gallery.png" alt="Theme gallery — 23 built-in themes for web-video-presentation" /></a>
+<a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/gallery.webp" alt="Theme gallery — 23 built-in themes for web-video-presentation" /></a>
 
 <sub>↑ All 23 themes at a glance — <a href="./skills/web-video-presentation/README.md#theme-gallery"><b>open the full gallery</b></a> for live 16:9 previews, design signatures, and best-for tags.</sub>
 
@@ -91,7 +91,7 @@ Links: [README](./skills/web-video-presentation/README.md) · [SKILL.md](./skill
 
 ### [`web-design-engineer`](./skills/web-design-engineer)
 
-![Web Design Skill](./dist/imgs/web-design-skill.png)
+![Web Design Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp)
 
 **Category:** Design / Frontend  
 **Best for:** web pages, landing pages, dashboards, interactive prototypes, HTML slide decks, animations, UI mockups, data visualizations, and design-system explorations.
@@ -109,22 +109,22 @@ Highlights:
 
 <table>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/aesop.png" alt="aesop preview" /></a><br /><sub><code>aesop</code><br />apothecary pages</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara preview" /></a><br /><sub><code>muji-kenya-hara</code><br />object catalogues</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine preview" /></a><br /><sub><code>monocle-magazine</code><br />magazine contents</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/stripe-press.png" alt="stripe-press preview" /></a><br /><sub><code>stripe-press</code><br />book detail</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp" alt="aesop preview" /></a><br /><sub><code>aesop</code><br />apothecary pages</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp" alt="muji-kenya-hara preview" /></a><br /><sub><code>muji-kenya-hara</code><br />object catalogues</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp" alt="monocle-magazine preview" /></a><br /><sub><code>monocle-magazine</code><br />magazine contents</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp" alt="stripe-press preview" /></a><br /><sub><code>stripe-press</code><br />book detail</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal preview" /></a><br /><sub><code>bloomberg-terminal</code><br />trading dashboards</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/linear.png" alt="linear preview" /></a><br /><sub><code>linear</code><br />dev tool landing</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh preview" /></a><br /><sub><code>vercel-mesh</code><br />deploy hero</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink preview" /></a><br /><sub><code>tufte-dataink</code><br />data narratives</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp" alt="bloomberg-terminal preview" /></a><br /><sub><code>bloomberg-terminal</code><br />trading dashboards</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp" alt="linear preview" /></a><br /><sub><code>linear</code><br />dev tool landing</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp" alt="vercel-mesh preview" /></a><br /><sub><code>vercel-mesh</code><br />deploy hero</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp" alt="tufte-dataink preview" /></a><br /><sub><code>tufte-dataink</code><br />data narratives</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern preview" /></a><br /><sub><code>mid-century-modern</code><br />poster homage</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism preview" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K portal</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley preview" /></a><br /><sub><code>businessweek-turley</code><br />editorial covers</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/active-theory.png" alt="active-theory preview" /></a><br /><sub><code>active-theory</code><br />cinematic launch</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp" alt="mid-century-modern preview" /></a><br /><sub><code>mid-century-modern</code><br />poster homage</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp" alt="y2k-retrofuturism preview" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K portal</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp" alt="bloomberg-businessweek-turley preview" /></a><br /><sub><code>businessweek-turley</code><br />editorial covers</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp" alt="active-theory preview" /></a><br /><sub><code>active-theory</code><br />cinematic launch</sub></td>
 </tr>
 </table>
 
@@ -136,7 +136,7 @@ Links: [README](./skills/web-design-engineer/README.md) · [SKILL.md](./skills/w
 
 ### [`gpt-image-2`](./skills/gpt-image-2)
 
-![GPT Image 2 Skill](./dist/imgs/gpt-image-2-skill.png)
+![GPT Image 2 Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/gpt-image-2-skill.webp)
 
 **Category:** Image Generation / Prompt Engineering  
 **Best for:** posters, UI mockups, product visuals, infographics, academic figures, technical diagrams, comics, avatars, storyboards, branding boards, and image-editing workflows.
@@ -157,7 +157,7 @@ Links: [README](./skills/gpt-image-2/README.md) · [SKILL.md](./skills/gpt-image
 
 ### [`kb-retriever`](./skills/kb-retriever)
 
-![Kb Retriever Skill](./dist/imgs/kb-retriever-skill.png)
+![Kb Retriever Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/kb-retriever-skill.webp)
 
 **Category:** Retrieval / Local Knowledge Base  
 **Best for:** answering questions from a local `knowledge/` directory, searching structured documentation, and extracting evidence from Markdown, text, PDF, and Excel files without flooding the agent context.

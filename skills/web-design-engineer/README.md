@@ -4,7 +4,7 @@
 
 [中文文档](./README.zh-CN.md) · [Back to collection root](../../README.md)
 
-![Web Design Skill](../../dist/imgs/web-design-skill.png)
+![Web Design Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp)
 
 ---
 
@@ -130,13 +130,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/apple-hig.png"><img src="../../dist/imgs/web-design/apple-hig.png" alt="apple-hig preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/apple-hig.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/apple-hig.webp" alt="apple-hig preview" /></a>
 <br /><strong><code>apple-hig</code></strong>
 <br /><sub>SF Pro Display, generous whitespace, soft elevation — the Apple Store voice</sub>
 <br /><sub><b>Best for</b> · hardware product pages · device launches · premium consumer tech</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/muji-kenya-hara.png"><img src="../../dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp" alt="muji-kenya-hara preview" /></a>
 <br /><strong><code>muji-kenya-hara</code></strong>
 <br /><sub>Emptiness as canvas, ash &amp; paper, every object photographed in air</sub>
 <br /><sub><b>Best for</b> · object catalogues · houseware brands · slow-living storefronts</sub>
@@ -144,13 +144,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/aesop.png"><img src="../../dist/imgs/web-design/aesop.png" alt="aesop preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp" alt="aesop preview" /></a>
 <br /><strong><code>aesop</code></strong>
 <br /><sub>Warm chamois, sage &amp; amber, serif copy that reads like a literary magazine</sub>
 <br /><sub><b>Best for</b> · apothecary product pages · beauty &amp; wellness · independent retailers</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/dieter-rams-braun.png"><img src="../../dist/imgs/web-design/dieter-rams-braun.png" alt="dieter-rams-braun preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/dieter-rams-braun.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/dieter-rams-braun.webp" alt="dieter-rams-braun preview" /></a>
 <br /><strong><code>dieter-rams-braun</code></strong>
 <br /><sub>Ten principles, monochrome grids, technical orthographics — function as form</sub>
 <br /><sub><b>Best for</b> · industrial-design archives · hardware specs · brand-principle pages</sub>
@@ -158,7 +158,7 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/monocle-magazine.png"><img src="../../dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp" alt="monocle-magazine preview" /></a>
 <br /><strong><code>monocle-magazine</code></strong>
 <br /><sub>Cosmopolitan briefings, navy &amp; coral, footnoted curiosity</sub>
 <br /><sub><b>Best for</b> · magazine contents · city &amp; travel briefings · lifestyle journals</sub>
@@ -181,13 +181,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/pentagram.png"><img src="../../dist/imgs/web-design/pentagram.png" alt="pentagram preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/pentagram.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/pentagram.webp" alt="pentagram preview" /></a>
 <br /><strong><code>pentagram</code></strong>
 <br /><sub>One bold typeface used as artwork, grid as scaffold, ink + ground only</sub>
 <br /><sub><b>Best for</b> · identity specimens · type-led portfolios · gallery announcements</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/vignelli-swiss-helvetica.png"><img src="../../dist/imgs/web-design/vignelli-swiss-helvetica.png" alt="vignelli-swiss-helvetica preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vignelli-swiss-helvetica.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vignelli-swiss-helvetica.webp" alt="vignelli-swiss-helvetica preview" /></a>
 <br /><strong><code>vignelli-swiss-helvetica</code></strong>
 <br /><sub>Helvetica at every size, six primary colours, the NYC Subway diagram</sub>
 <br /><sub><b>Best for</b> · wayfinding &amp; transit · public-info posters · brand-system specimens</sub>
@@ -195,13 +195,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/bloomberg-terminal.png"><img src="../../dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp" alt="bloomberg-terminal preview" /></a>
 <br /><strong><code>bloomberg-terminal</code></strong>
 <br /><sub>Amber on navy-black, mono everywhere, density over comfort</sub>
 <br /><sub><b>Best for</b> · trading dashboards · ops consoles · power-user dense tools</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/tufte-dataink.png"><img src="../../dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp" alt="tufte-dataink preview" /></a>
 <br /><strong><code>tufte-dataink</code></strong>
 <br /><sub>Sparklines in body copy, small multiples, no chartjunk</sub>
 <br /><sub><b>Best for</b> · data narratives · research write-ups · academic essays</sub>
@@ -209,7 +209,7 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/nyt-the-daily.png"><img src="../../dist/imgs/web-design/nyt-the-daily.png" alt="nyt-the-daily preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/nyt-the-daily.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/nyt-the-daily.webp" alt="nyt-the-daily preview" /></a>
 <br /><strong><code>nyt-the-daily</code></strong>
 <br /><sub>Cheltenham over Imperial, dateline above all, the gravity of the broadsheet</sub>
 <br /><sub><b>Best for</b> · news features · podcast hubs · long-form journalism</sub>
@@ -232,13 +232,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/linear.png"><img src="../../dist/imgs/web-design/linear.png" alt="linear preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp" alt="linear preview" /></a>
 <br /><strong><code>linear</code></strong>
 <br /><sub>Warm dark, hairline borders, purple flicks of accent, shortcut chips</sub>
 <br /><sub><b>Best for</b> · dev-tool landing pages · issue / project SaaS · API &amp; infra products</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/vercel-mesh.png"><img src="../../dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp" alt="vercel-mesh preview" /></a>
 <br /><strong><code>vercel-mesh</code></strong>
 <br /><sub>Pure black, geometric mesh gradient, Geist Sans, command-line clarity</sub>
 <br /><sub><b>Best for</b> · deploy / runtime tools · framework launches · technical hero pages</sub>
@@ -246,13 +246,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/raycast.png"><img src="../../dist/imgs/web-design/raycast.png" alt="raycast preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/raycast.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/raycast.webp" alt="raycast preview" /></a>
 <br /><strong><code>raycast</code></strong>
 <br /><sub>Glass card on red-tinted void, keyboard-first, condensed list cells</sub>
 <br /><sub><b>Best for</b> · command palettes · launcher apps · keyboard-driven tooling</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/notion-pre-ai.png"><img src="../../dist/imgs/web-design/notion-pre-ai.png" alt="notion-pre-ai preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/notion-pre-ai.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/notion-pre-ai.webp" alt="notion-pre-ai preview" /></a>
 <br /><strong><code>notion-pre-ai</code></strong>
 <br /><sub>Off-white pages, drag-handle dots, casual emoji headings, callouts everywhere</sub>
 <br /><sub><b>Best for</b> · workspace docs · internal wikis · friendly productivity apps</sub>
@@ -267,13 +267,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/field-io.png"><img src="../../dist/imgs/web-design/field-io.png" alt="field-io preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/field-io.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/field-io.webp" alt="field-io preview" /></a>
 <br /><strong><code>field-io</code></strong>
 <br /><sub>Particle systems behind editorial type, code-art aesthetic, dark studio</sub>
 <br /><sub><b>Best for</b> · creative-tech studios · generative-art case studies · WebGL portfolios</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/active-theory.png"><img src="../../dist/imgs/web-design/active-theory.png" alt="active-theory preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp" alt="active-theory preview" /></a>
 <br /><strong><code>active-theory</code></strong>
 <br /><sub>WebGL ambitions, full-bleed type, candy colours over deep black</sub>
 <br /><sub><b>Best for</b> · cinematic product launches · campaign sites · award-bait microsites</sub>
@@ -281,7 +281,7 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/resn-storytelling.png"><img src="../../dist/imgs/web-design/resn-storytelling.png" alt="resn-storytelling preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/resn-storytelling.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/resn-storytelling.webp" alt="resn-storytelling preview" /></a>
 <br /><strong><code>resn-storytelling</code></strong>
 <br /><sub>Surreal, lush, every frame a tableau, headlines on textured noise</sub>
 <br /><sub><b>Best for</b> · narrative scrolls · entertainment / IP sites · agency reels</sub>
@@ -304,13 +304,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/are-na.png"><img src="../../dist/imgs/web-design/are-na.png" alt="are-na preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/are-na.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/are-na.webp" alt="are-na preview" /></a>
 <br /><strong><code>are-na</code></strong>
 <br /><sub>System fonts on purpose, browser-default blue links, the honest web</sub>
 <br /><sub><b>Best for</b> · research channels · indie communities · anti-design content tools</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/bloomberg-businessweek-turley.png"><img src="../../dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp" alt="bloomberg-businessweek-turley preview" /></a>
 <br /><strong><code>bloomberg-businessweek-turley</code></strong>
 <br /><sub>Yellow caution + black ink, type as collage, hand-cut headlines</sub>
 <br /><sub><b>Best for</b> · editorial covers · opinion pieces · campaign posters</sub>
@@ -318,7 +318,7 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/balenciaga-post-2017.png"><img src="../../dist/imgs/web-design/balenciaga-post-2017.png" alt="balenciaga-post-2017 preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/balenciaga-post-2017.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/balenciaga-post-2017.webp" alt="balenciaga-post-2017 preview" /></a>
 <br /><strong><code>balenciaga-post-2017</code></strong>
 <br /><sub>All caps, broken grids, deadpan product on white, anti-luxury luxury</sub>
 <br /><sub><b>Best for</b> · fashion collections · drop announcements · contrarian luxury</sub>
@@ -341,13 +341,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/mailchimp-freddie.png"><img src="../../dist/imgs/web-design/mailchimp-freddie.png" alt="mailchimp-freddie preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mailchimp-freddie.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mailchimp-freddie.webp" alt="mailchimp-freddie preview" /></a>
 <br /><strong><code>mailchimp-freddie</code></strong>
 <br /><sub>Cavendish yellow, hand-drawn doodles, conversational copy, the SMB cheerleader</sub>
 <br /><sub><b>Best for</b> · onboarding flows · SMB marketing tools · friendly consumer apps</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/stripe-press.png"><img src="../../dist/imgs/web-design/stripe-press.png" alt="stripe-press preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp" alt="stripe-press preview" /></a>
 <br /><strong><code>stripe-press</code></strong>
 <br /><sub>Cream paper, GT Super, hand-bound luxury, ideas as objects</sub>
 <br /><sub><b>Best for</b> · book detail pages · long-form essays · publisher / press sites</sub>
@@ -355,7 +355,7 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/headspace-meditation.png"><img src="../../dist/imgs/web-design/headspace-meditation.png" alt="headspace-meditation preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/headspace-meditation.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/headspace-meditation.webp" alt="headspace-meditation preview" /></a>
 <br /><strong><code>headspace-meditation</code></strong>
 <br /><sub>Orange suns, rounded blobs, hand-illustrated calm, a daily reset</sub>
 <br /><sub><b>Best for</b> · meditation &amp; wellness · habit / mood apps · cosy consumer cards</sub>
@@ -378,13 +378,13 @@ The skill ships **25 named recipes**, each tied to a real brand, studio, or desi
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/y2k-retrofuturism.png"><img src="../../dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp" alt="y2k-retrofuturism preview" /></a>
 <br /><strong><code>y2k-retrofuturism</code></strong>
 <br /><sub>Chrome bevels, frosted glass, lava blobs, MSN-blue everywhere</sub>
 <br /><sub><b>Best for</b> · Y2K nostalgia · early-web portals · gen-Z brand stunts</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/mid-century-modern.png"><img src="../../dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp" alt="mid-century-modern preview" /></a>
 <br /><strong><code>mid-century-modern</code></strong>
 <br /><sub>Mustard, brick, cyan; cut-paper geometry; the optimism of 1957</sub>
 <br /><sub><b>Best for</b> · poster homages · cultural events · vintage-print brand voice</sub>

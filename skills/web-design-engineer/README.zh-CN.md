@@ -4,7 +4,7 @@
 
 [English](./README.md) · [返回集合首页](../../README.zh-CN.md)
 
-![Web Design Skill](../../dist/imgs/web-design-skill.png)
+![Web Design Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp)
 
 ---
 
@@ -130,13 +130,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/apple-hig.png"><img src="../../dist/imgs/web-design/apple-hig.png" alt="apple-hig preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/apple-hig.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/apple-hig.webp" alt="apple-hig preview" /></a>
 <br /><strong><code>apple-hig</code></strong>
 <br /><sub>SF Pro Display、慷慨留白、柔和阴影 —— Apple Store 的语气</sub>
 <br /><sub><b>适合</b> · 硬件产品页 · 设备发布 · 高端消费电子</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/muji-kenya-hara.png"><img src="../../dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp" alt="muji-kenya-hara preview" /></a>
 <br /><strong><code>muji-kenya-hara</code></strong>
 <br /><sub>空作为画布、灰与纸、器物悬浮在空气中拍摄</sub>
 <br /><sub><b>适合</b> · 器物目录 · 家居品牌 · 慢生活店铺</sub>
@@ -144,13 +144,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/aesop.png"><img src="../../dist/imgs/web-design/aesop.png" alt="aesop preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp" alt="aesop preview" /></a>
 <br /><strong><code>aesop</code></strong>
 <br /><sub>暖驼黄、鼠尾草 &amp; 琥珀，衬线正文像文学杂志</sub>
 <br /><sub><b>适合</b> · 药剂师产品页 · 美妆 &amp; 健康 · 独立零售</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/dieter-rams-braun.png"><img src="../../dist/imgs/web-design/dieter-rams-braun.png" alt="dieter-rams-braun preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/dieter-rams-braun.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/dieter-rams-braun.webp" alt="dieter-rams-braun preview" /></a>
 <br /><strong><code>dieter-rams-braun</code></strong>
 <br /><sub>十大设计原则、灰阶网格、技术正投影 —— 功能即形式</sub>
 <br /><sub><b>适合</b> · 工业设计档案 · 硬件 spec · 品牌原则页</sub>
@@ -158,7 +158,7 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/monocle-magazine.png"><img src="../../dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp" alt="monocle-magazine preview" /></a>
 <br /><strong><code>monocle-magazine</code></strong>
 <br /><sub>世界主义简报、深海蓝与珊瑚色、脚注式好奇心</sub>
 <br /><sub><b>适合</b> · 杂志目录 · 城市 / 旅行简报 · 生活方式期刊</sub>
@@ -181,13 +181,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/pentagram.png"><img src="../../dist/imgs/web-design/pentagram.png" alt="pentagram preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/pentagram.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/pentagram.webp" alt="pentagram preview" /></a>
 <br /><strong><code>pentagram</code></strong>
 <br /><sub>一种大字体即艺术品、网格作骨架、仅墨色与底色</sub>
 <br /><sub><b>适合</b> · 标识样本 · 字体主导的作品集 · 画廊公告</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/vignelli-swiss-helvetica.png"><img src="../../dist/imgs/web-design/vignelli-swiss-helvetica.png" alt="vignelli-swiss-helvetica preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vignelli-swiss-helvetica.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vignelli-swiss-helvetica.webp" alt="vignelli-swiss-helvetica preview" /></a>
 <br /><strong><code>vignelli-swiss-helvetica</code></strong>
 <br /><sub>全字号 Helvetica、六种主色、纽约地铁信号图</sub>
 <br /><sub><b>适合</b> · 公共指示 &amp; 交通 · 公共信息海报 · 品牌系统样本</sub>
@@ -195,13 +195,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/bloomberg-terminal.png"><img src="../../dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp" alt="bloomberg-terminal preview" /></a>
 <br /><strong><code>bloomberg-terminal</code></strong>
 <br /><sub>深海军蓝底上的琥珀色、全等宽、密度高于舒适</sub>
 <br /><sub><b>适合</b> · 交易仪表盘 · 运维控制台 · 高密度专业工具</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/tufte-dataink.png"><img src="../../dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp" alt="tufte-dataink preview" /></a>
 <br /><strong><code>tufte-dataink</code></strong>
 <br /><sub>段落内嵌微图、小型多重图、零图表杂质</sub>
 <br /><sub><b>适合</b> · 数据叙事 · 研究报告 · 学术长文</sub>
@@ -209,7 +209,7 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/nyt-the-daily.png"><img src="../../dist/imgs/web-design/nyt-the-daily.png" alt="nyt-the-daily preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/nyt-the-daily.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/nyt-the-daily.webp" alt="nyt-the-daily preview" /></a>
 <br /><strong><code>nyt-the-daily</code></strong>
 <br /><sub>Cheltenham 衬线压在 Imperial 之上、日期线居首、宽幅报纸的重量</sub>
 <br /><sub><b>适合</b> · 新闻特稿 · 播客中枢 · 长篇深度报道</sub>
@@ -232,13 +232,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/linear.png"><img src="../../dist/imgs/web-design/linear.png" alt="linear preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp" alt="linear preview" /></a>
 <br /><strong><code>linear</code></strong>
 <br /><sub>暖色调暗夜、发丝边、紫色点缀、键盘快捷键芯片</sub>
 <br /><sub><b>适合</b> · 开发者工具落地页 · Issue / 项目 SaaS · API &amp; 基础设施产品</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/vercel-mesh.png"><img src="../../dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp" alt="vercel-mesh preview" /></a>
 <br /><strong><code>vercel-mesh</code></strong>
 <br /><sub>纯黑、几何网格渐变、Geist Sans、命令行式清晰</sub>
 <br /><sub><b>适合</b> · 部署 / 运行时工具 · 框架发布 · 技术 hero 页</sub>
@@ -246,13 +246,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/raycast.png"><img src="../../dist/imgs/web-design/raycast.png" alt="raycast preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/raycast.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/raycast.webp" alt="raycast preview" /></a>
 <br /><strong><code>raycast</code></strong>
 <br /><sub>红光雾里的玻璃卡片、键盘优先、紧凑列表行</sub>
 <br /><sub><b>适合</b> · 命令面板 · launcher 应用 · 键盘驱动型工具</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/notion-pre-ai.png"><img src="../../dist/imgs/web-design/notion-pre-ai.png" alt="notion-pre-ai preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/notion-pre-ai.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/notion-pre-ai.webp" alt="notion-pre-ai preview" /></a>
 <br /><strong><code>notion-pre-ai</code></strong>
 <br /><sub>米白页面、拖拽点、随性 emoji 标题、随处可见的提示条</sub>
 <br /><sub><b>适合</b> · 工作区文档 · 内部 Wiki · 友好的生产力应用</sub>
@@ -267,13 +267,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/field-io.png"><img src="../../dist/imgs/web-design/field-io.png" alt="field-io preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/field-io.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/field-io.webp" alt="field-io preview" /></a>
 <br /><strong><code>field-io</code></strong>
 <br /><sub>粒子系统衬着编辑式字体、代码艺术美学、暗色工作室</sub>
 <br /><sub><b>适合</b> · 创意科技工作室 · 生成艺术案例 · WebGL 作品集</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/active-theory.png"><img src="../../dist/imgs/web-design/active-theory.png" alt="active-theory preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp" alt="active-theory preview" /></a>
 <br /><strong><code>active-theory</code></strong>
 <br /><sub>WebGL 野心、全屏字、深黑底上的糖果色</sub>
 <br /><sub><b>适合</b> · 电影感产品发布 · 战役站 · 冲奖型微型站点</sub>
@@ -281,7 +281,7 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/resn-storytelling.png"><img src="../../dist/imgs/web-design/resn-storytelling.png" alt="resn-storytelling preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/resn-storytelling.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/resn-storytelling.webp" alt="resn-storytelling preview" /></a>
 <br /><strong><code>resn-storytelling</code></strong>
 <br /><sub>超现实、浓郁、每帧都是布景、标题压在噪点纹理上</sub>
 <br /><sub><b>适合</b> · 叙事滚动 · 娱乐 / IP 站 · 工作室作品集</sub>
@@ -304,13 +304,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/are-na.png"><img src="../../dist/imgs/web-design/are-na.png" alt="are-na preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/are-na.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/are-na.webp" alt="are-na preview" /></a>
 <br /><strong><code>are-na</code></strong>
 <br /><sub>刻意的系统字体、浏览器默认蓝色链接、诚实的网页</sub>
 <br /><sub><b>适合</b> · 研究型频道 · 独立社区 · 反设计内容工具</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/bloomberg-businessweek-turley.png"><img src="../../dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp" alt="bloomberg-businessweek-turley preview" /></a>
 <br /><strong><code>bloomberg-businessweek-turley</code></strong>
 <br /><sub>警示黄 + 黑墨、字体作拼贴、手工剪切式标题</sub>
 <br /><sub><b>适合</b> · 编辑封面 · 评论文章 · 战役式海报</sub>
@@ -318,7 +318,7 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/balenciaga-post-2017.png"><img src="../../dist/imgs/web-design/balenciaga-post-2017.png" alt="balenciaga-post-2017 preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/balenciaga-post-2017.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/balenciaga-post-2017.webp" alt="balenciaga-post-2017 preview" /></a>
 <br /><strong><code>balenciaga-post-2017</code></strong>
 <br /><sub>全大写、破碎网格、白底冷面产品、反奢侈的奢侈</sub>
 <br /><sub><b>适合</b> · 时装系列 · drop 公告 · 逆向思考的奢侈品牌</sub>
@@ -341,13 +341,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/mailchimp-freddie.png"><img src="../../dist/imgs/web-design/mailchimp-freddie.png" alt="mailchimp-freddie preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mailchimp-freddie.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mailchimp-freddie.webp" alt="mailchimp-freddie preview" /></a>
 <br /><strong><code>mailchimp-freddie</code></strong>
 <br /><sub>Cavendish 黄、手绘涂鸦、对话式文案 —— 小生意的拉拉队长</sub>
 <br /><sub><b>适合</b> · 引导流程 · 中小企业营销工具 · 友好的消费类应用</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/stripe-press.png"><img src="../../dist/imgs/web-design/stripe-press.png" alt="stripe-press preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp" alt="stripe-press preview" /></a>
 <br /><strong><code>stripe-press</code></strong>
 <br /><sub>奶白纸、GT Super、手工装帧式奢华、思想作器物</sub>
 <br /><sub><b>适合</b> · 书籍详情页 · 长篇散文 · 出版社 / 出版品牌站</sub>
@@ -355,7 +355,7 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 </tr>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/headspace-meditation.png"><img src="../../dist/imgs/web-design/headspace-meditation.png" alt="headspace-meditation preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/headspace-meditation.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/headspace-meditation.webp" alt="headspace-meditation preview" /></a>
 <br /><strong><code>headspace-meditation</code></strong>
 <br /><sub>橙色太阳、圆润色团、手绘平静感、每日重置</sub>
 <br /><sub><b>适合</b> · 冥想 &amp; 健康 · 习惯 / 情绪应用 · 温馨的消费类卡片</sub>
@@ -378,13 +378,13 @@ Skill 自带 **25 套有名字的配方**，每套都对应到真实的品牌、
 <table>
 <tr>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/y2k-retrofuturism.png"><img src="../../dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp" alt="y2k-retrofuturism preview" /></a>
 <br /><strong><code>y2k-retrofuturism</code></strong>
 <br /><sub>铬合金倒角、磨砂玻璃、熔岩色块、随处可见的 MSN 蓝</sub>
 <br /><sub><b>适合</b> · Y2K 怀旧 · 早期网络门户 · Z 世代品牌大型整活</sub>
 </td>
 <td align="center" width="50%">
-<a href="../../dist/imgs/web-design/mid-century-modern.png"><img src="../../dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern preview" /></a>
+<a href="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp" alt="mid-century-modern preview" /></a>
 <br /><strong><code>mid-century-modern</code></strong>
 <br /><sub>芥末黄、砖红、青蓝；剪纸式几何；1957 年的乐观主义</sub>
 <br /><sub><b>适合</b> · 海报致敬 · 文化活动 · 复古印刷品牌语调</sub>

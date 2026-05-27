@@ -9,24 +9,24 @@
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="#web-video-presentation"><img src="./dist/imgs/web-video-presentation-skill.png" alt="Web Video Presentation Skill" width="100%"></a>
+<a href="#web-video-presentation"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video-presentation-skill.webp" alt="Web Video Presentation Skill" width="100%"></a>
 <br/><a href="#web-video-presentation"><strong>web-video-presentation</strong></a>
 <br/><sub>Web 動画 / プレゼンテーション</sub>
 </td>
 <td width="50%" valign="top">
-<a href="#web-design-engineer"><img src="./dist/imgs/web-design-skill.png" alt="Web Design Skill" width="100%"></a>
+<a href="#web-design-engineer"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp" alt="Web Design Skill" width="100%"></a>
 <br/><a href="#web-design-engineer"><strong>web-design-engineer</strong></a>
 <br/><sub>デザイン / フロントエンド</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="#gpt-image-2"><img src="./dist/imgs/gpt-image-2-skill.png" alt="GPT Image 2 Skill" width="100%"></a>
+<a href="#gpt-image-2"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/gpt-image-2-skill.webp" alt="GPT Image 2 Skill" width="100%"></a>
 <br/><a href="#gpt-image-2"><strong>gpt-image-2</strong></a>
 <br/><sub>画像生成 / プロンプト</sub>
 </td>
 <td width="50%" valign="top">
-<a href="#kb-retriever"><img src="./dist/imgs/kb-retriever-skill.png" alt="KB Retriever Skill" width="100%"></a>
+<a href="#kb-retriever"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/kb-retriever-skill.webp" alt="KB Retriever Skill" width="100%"></a>
 <br/><a href="#kb-retriever"><strong>kb-retriever</strong></a>
 <br/><sub>ローカル知識ベース検索</sub>
 </td>
@@ -55,7 +55,7 @@
 
 ### [`web-video-presentation`](./skills/web-video-presentation)
 
-![Web Video Presentation Skill](./dist/imgs/web-video-presentation-skill.png)
+![Web Video Presentation Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video-presentation-skill.webp)
 
 **カテゴリ:** Web 動画 / プレゼンテーションエンジニアリング  
 **用途:** スクリプト、記事、レッスン、製品デモ、トークを、シネマティックな動画として画面録画できるクリック駆動の 16:9 Web プレゼンテーションに変換します。
@@ -74,14 +74,14 @@
 
 <table>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/creative-voltage.png" alt="creative-voltage プレビュー" /></a><br /><sub><code>creative-voltage</code><br />クリエイティブトーク</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/blueprint.png" alt="blueprint プレビュー" /></a><br /><sub><code>blueprint</code><br />技術アーキテクチャ</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/swiss-ikb.png" alt="swiss-ikb プレビュー" /></a><br /><sub><code>swiss-ikb</code><br />データレポート</sub></td>
-<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/chalk-garden.png" alt="chalk-garden プレビュー" /></a><br /><sub><code>chalk-garden</code><br />科学解説</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/creative-voltage.webp" alt="creative-voltage プレビュー" /></a><br /><sub><code>creative-voltage</code><br />クリエイティブトーク</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/blueprint.webp" alt="blueprint プレビュー" /></a><br /><sub><code>blueprint</code><br />技術アーキテクチャ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/swiss-ikb.webp" alt="swiss-ikb プレビュー" /></a><br /><sub><code>swiss-ikb</code><br />データレポート</sub></td>
+<td align="center" width="25%"><a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/chalk-garden.webp" alt="chalk-garden プレビュー" /></a><br /><sub><code>chalk-garden</code><br />科学解説</sub></td>
 </tr>
 </table>
 
-<a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="./dist/imgs/web-video/gallery.png" alt="web-video-presentation のテーマギャラリー — 23 種類のビルトインテーマ" /></a>
+<a href="./skills/web-video-presentation/README.md#theme-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-video/gallery.webp" alt="web-video-presentation のテーマギャラリー — 23 種類のビルトインテーマ" /></a>
 
 <sub>↑ 23 種類のテーマを一望 — <a href="./skills/web-video-presentation/README.md#theme-gallery"><b>完全なギャラリーを開く</b></a>と、ライブ 16:9 プレビュー、デザインシグネチャ、用途タグ付きで閲覧できます。</sub>
 
@@ -91,7 +91,7 @@
 
 ### [`web-design-engineer`](./skills/web-design-engineer)
 
-![Web Design Skill](./dist/imgs/web-design-skill.png)
+![Web Design Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design-skill.webp)
 
 **カテゴリ:** デザイン / フロントエンド  
 **用途:** Web ページ、ランディングページ、ダッシュボード、インタラクティブプロトタイプ、HTML スライドデッキ、アニメーション、UI モックアップ、データビジュアライゼーション、デザインシステムの探求。
@@ -109,22 +109,22 @@
 
 <table>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/aesop.png" alt="aesop プレビュー" /></a><br /><sub><code>aesop</code><br />アポセカリー</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara プレビュー" /></a><br /><sub><code>muji-kenya-hara</code><br />器物カタログ</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine プレビュー" /></a><br /><sub><code>monocle-magazine</code><br />雑誌目次</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/stripe-press.png" alt="stripe-press プレビュー" /></a><br /><sub><code>stripe-press</code><br />書籍詳細</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/aesop.webp" alt="aesop プレビュー" /></a><br /><sub><code>aesop</code><br />アポセカリー</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/muji-kenya-hara.webp" alt="muji-kenya-hara プレビュー" /></a><br /><sub><code>muji-kenya-hara</code><br />器物カタログ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/monocle-magazine.webp" alt="monocle-magazine プレビュー" /></a><br /><sub><code>monocle-magazine</code><br />雑誌目次</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/stripe-press.webp" alt="stripe-press プレビュー" /></a><br /><sub><code>stripe-press</code><br />書籍詳細</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal プレビュー" /></a><br /><sub><code>bloomberg-terminal</code><br />取引ダッシュボード</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/linear.png" alt="linear プレビュー" /></a><br /><sub><code>linear</code><br />開発者 LP</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh プレビュー" /></a><br /><sub><code>vercel-mesh</code><br />デプロイ Hero</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink プレビュー" /></a><br /><sub><code>tufte-dataink</code><br />データナラティブ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-terminal.webp" alt="bloomberg-terminal プレビュー" /></a><br /><sub><code>bloomberg-terminal</code><br />取引ダッシュボード</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/linear.webp" alt="linear プレビュー" /></a><br /><sub><code>linear</code><br />開発者 LP</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/vercel-mesh.webp" alt="vercel-mesh プレビュー" /></a><br /><sub><code>vercel-mesh</code><br />デプロイ Hero</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/tufte-dataink.webp" alt="tufte-dataink プレビュー" /></a><br /><sub><code>tufte-dataink</code><br />データナラティブ</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern プレビュー" /></a><br /><sub><code>mid-century-modern</code><br />ポスターオマージュ</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism プレビュー" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K ポータル</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley プレビュー" /></a><br /><sub><code>businessweek-turley</code><br />編集カバー</sub></td>
-<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/active-theory.png" alt="active-theory プレビュー" /></a><br /><sub><code>active-theory</code><br />没入型ローンチ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/mid-century-modern.webp" alt="mid-century-modern プレビュー" /></a><br /><sub><code>mid-century-modern</code><br />ポスターオマージュ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/y2k-retrofuturism.webp" alt="y2k-retrofuturism プレビュー" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K ポータル</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/bloomberg-businessweek-turley.webp" alt="bloomberg-businessweek-turley プレビュー" /></a><br /><sub><code>businessweek-turley</code><br />編集カバー</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/web-design/active-theory.webp" alt="active-theory プレビュー" /></a><br /><sub><code>active-theory</code><br />没入型ローンチ</sub></td>
 </tr>
 </table>
 
@@ -136,7 +136,7 @@
 
 ### [`gpt-image-2`](./skills/gpt-image-2)
 
-![GPT Image 2 Skill](./dist/imgs/gpt-image-2-skill.png)
+![GPT Image 2 Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/gpt-image-2-skill.webp)
 
 **カテゴリ:** 画像生成 / プロンプトエンジニアリング  
 **用途:** ポスター、UI モックアップ、製品ビジュアル、インフォグラフィック、学術図、技術図、コミック、アバター、ストーリーボード、ブランディングボード、画像編集ワークフロー。
@@ -157,7 +157,7 @@
 
 ### [`kb-retriever`](./skills/kb-retriever)
 
-![Kb Retriever Skill](./dist/imgs/kb-retriever-skill.png)
+![Kb Retriever Skill](https://cdn.jsdelivr.net/gh/ConardLi/assets@main/imgs/kb-retriever-skill.webp)
 
 **カテゴリ:** 検索 / ローカル知識ベース  
 **用途:** ローカルの `knowledge/` ディレクトリから質問に答え、構造化されたドキュメントを検索し、エージェントのコンテキストを溢れさせることなく Markdown、テキスト、PDF、Excel ファイルから根拠を抽出します。
