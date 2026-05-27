@@ -107,6 +107,29 @@
 - 包含 inline React + Babel、CSS tokens、`oklch()` 配色、container queries、reduced-motion 等实现规则
 - 提供高级模式参考，覆盖设备框、幻灯片引擎、动画时间线、仪表盘等常见 Web 产物
 
+<table>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/aesop.png" alt="aesop 预览" /></a><br /><sub><code>aesop</code><br />药剂师页</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara 预览" /></a><br /><sub><code>muji-kenya-hara</code><br />器物目录</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine 预览" /></a><br /><sub><code>monocle-magazine</code><br />杂志目录</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/stripe-press.png" alt="stripe-press 预览" /></a><br /><sub><code>stripe-press</code><br />书籍详情</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal 预览" /></a><br /><sub><code>bloomberg-terminal</code><br />交易仪表盘</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/linear.png" alt="linear 预览" /></a><br /><sub><code>linear</code><br />开发者落地页</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh 预览" /></a><br /><sub><code>vercel-mesh</code><br />部署落地页</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink 预览" /></a><br /><sub><code>tufte-dataink</code><br />数据叙事</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern 预览" /></a><br /><sub><code>mid-century-modern</code><br />海报致敬</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism 预览" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K 门户</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley 预览" /></a><br /><sub><code>businessweek-turley</code><br />编辑封面</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><img src="./dist/imgs/web-design/active-theory.png" alt="active-theory 预览" /></a><br /><sub><code>active-theory</code><br />电影感发布</sub></td>
+</tr>
+</table>
+
+<sub>↑ 25 套有 anchor 的配方里挑出最具代表性的 12 套 —— <a href="./skills/web-design-engineer/README.zh-CN.md#风格配方画廊"><b>打开完整画廊</b></a>，含全部 25 个真实作品（药剂师页、交易工作站、杂志封面、Y2K 门户、Mid-Century 海报……），含签名手法与适合场景标签。</sub>
+
 链接：[README](./skills/web-design-engineer/README.zh-CN.md) · [SKILL.md](./skills/web-design-engineer/SKILL.md) · [Website](./website/web-design-website) · [Demo](./demo/web-design-demo) · <!-- DOWNLOAD:web-design-engineer:start -->[下载 v1.2.1 .zip](https://github.com/ConardLi/garden-skills/releases/download/web-design-engineer-v1.2.1/web-design-engineer-1.2.1.zip)<!-- DOWNLOAD:web-design-engineer:end -->
 
 ---

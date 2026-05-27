@@ -107,6 +107,29 @@
 - インライン React + Babel、CSS トークン、`oklch()` カラー処理、コンテナクエリ、reduced-motion 対応の実装ルールを含む
 - デバイスフレーム、スライドエンジン、アニメーションタイムライン、ダッシュボード、その他の再利用可能な Web 成果物のための高度なパターンリファレンスを同梱
 
+<table>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/aesop.png" alt="aesop プレビュー" /></a><br /><sub><code>aesop</code><br />アポセカリー</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara プレビュー" /></a><br /><sub><code>muji-kenya-hara</code><br />器物カタログ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine プレビュー" /></a><br /><sub><code>monocle-magazine</code><br />雑誌目次</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/stripe-press.png" alt="stripe-press プレビュー" /></a><br /><sub><code>stripe-press</code><br />書籍詳細</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal プレビュー" /></a><br /><sub><code>bloomberg-terminal</code><br />取引ダッシュボード</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/linear.png" alt="linear プレビュー" /></a><br /><sub><code>linear</code><br />開発者 LP</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh プレビュー" /></a><br /><sub><code>vercel-mesh</code><br />デプロイ Hero</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink プレビュー" /></a><br /><sub><code>tufte-dataink</code><br />データナラティブ</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern プレビュー" /></a><br /><sub><code>mid-century-modern</code><br />ポスターオマージュ</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism プレビュー" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K ポータル</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley プレビュー" /></a><br /><sub><code>businessweek-turley</code><br />編集カバー</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/active-theory.png" alt="active-theory プレビュー" /></a><br /><sub><code>active-theory</code><br />没入型ローンチ</sub></td>
+</tr>
+</table>
+
+<sub>↑ 25 種類の anchor 付きレシピから代表的な 12 種類を抜粋 — <a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><b>完全なギャラリーを開く</b></a>と、25 種類すべての実作品（アポセカリーページ、取引ワークステーション、雑誌カバー、Y2K ポータル、ミッドセンチュリーポスター…）がシグネチャムーブと用途タグ付きで閲覧できます。</sub>
+
 リンク: [README](./skills/web-design-engineer/README.md) · [SKILL.md](./skills/web-design-engineer/SKILL.md) · [Website](./website/web-design-website) · [Demo](./demo/web-design-demo) · <!-- DOWNLOAD:web-design-engineer:start -->[Download v1.2.1 .zip](https://github.com/ConardLi/garden-skills/releases/download/web-design-engineer-v1.2.1/web-design-engineer-1.2.1.zip)<!-- DOWNLOAD:web-design-engineer:end -->
 
 ---

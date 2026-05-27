@@ -107,6 +107,29 @@ Highlights:
 - Includes practical implementation rules for inline React + Babel, CSS tokens, `oklch()` color work, container queries, and reduced-motion handling
 - Ships an advanced patterns reference for device frames, slide engines, animation timelines, dashboards, and other reusable web artifacts
 
+<table>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/aesop.png" alt="aesop preview" /></a><br /><sub><code>aesop</code><br />apothecary pages</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/muji-kenya-hara.png" alt="muji-kenya-hara preview" /></a><br /><sub><code>muji-kenya-hara</code><br />object catalogues</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/monocle-magazine.png" alt="monocle-magazine preview" /></a><br /><sub><code>monocle-magazine</code><br />magazine contents</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/stripe-press.png" alt="stripe-press preview" /></a><br /><sub><code>stripe-press</code><br />book detail</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-terminal.png" alt="bloomberg-terminal preview" /></a><br /><sub><code>bloomberg-terminal</code><br />trading dashboards</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/linear.png" alt="linear preview" /></a><br /><sub><code>linear</code><br />dev tool landing</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/vercel-mesh.png" alt="vercel-mesh preview" /></a><br /><sub><code>vercel-mesh</code><br />deploy hero</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/tufte-dataink.png" alt="tufte-dataink preview" /></a><br /><sub><code>tufte-dataink</code><br />data narratives</sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/mid-century-modern.png" alt="mid-century-modern preview" /></a><br /><sub><code>mid-century-modern</code><br />poster homage</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/y2k-retrofuturism.png" alt="y2k-retrofuturism preview" /></a><br /><sub><code>y2k-retrofuturism</code><br />Y2K portal</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/bloomberg-businessweek-turley.png" alt="bloomberg-businessweek-turley preview" /></a><br /><sub><code>businessweek-turley</code><br />editorial covers</sub></td>
+<td align="center" width="25%"><a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><img src="./dist/imgs/web-design/active-theory.png" alt="active-theory preview" /></a><br /><sub><code>active-theory</code><br />cinematic launch</sub></td>
+</tr>
+</table>
+
+<sub>↑ 12 of 25 anchored recipes — <a href="./skills/web-design-engineer/README.md#style-recipe-gallery"><b>open the full gallery</b></a> for all 25 working artefacts (apothecary pages, trading workstations, magazine covers, Y2K portals, mid-century posters …) with signature moves and best-for tags.</sub>
+
 Links: [README](./skills/web-design-engineer/README.md) · [SKILL.md](./skills/web-design-engineer/SKILL.md) · [Website](./website/web-design-website) · [Demo](./demo/web-design-demo) · <!-- DOWNLOAD:web-design-engineer:start -->[Download v1.2.1 .zip](https://github.com/ConardLi/garden-skills/releases/download/web-design-engineer-v1.2.1/web-design-engineer-1.2.1.zip)<!-- DOWNLOAD:web-design-engineer:end -->
 
 ---
