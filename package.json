@@ -17,6 +17,7 @@
     "release": "node scripts/release/cut-release.mjs",
     "release:dry": "node scripts/release/cut-release.mjs --dry-run",
     "list": "node scripts/release/list-skills.mjs",
+    "init:gpt-image-2-config": "node skills/gpt-image-2/scripts/init-image-env.js",
     "pack": "node scripts/release/pack-skill.mjs",
     "pack:all": "node scripts/release/pack-skill.mjs --all",
     "readme:sync": "node scripts/release/update-readme.mjs",

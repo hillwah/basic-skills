@@ -52,6 +52,14 @@ node skills/gpt-image-2/scripts/check-mode.js
 
 下面 1~4 仅在 **Mode A** 下使用。Mode A 会优先读取 `OPENAI_API_KEY` / `OPENAI_BASE_URL`，也会识别 Codex 用户级 `config.toml` 里的 `openai_base_url`、`model_providers.<id>.base_url` 和 `env_key`。如果 Codex 使用 file-based API-key 登录，还会尝试从 `$CODEX_HOME/auth.json` 中读取 Platform API key；ChatGPT / Codex access token 不会被当作 Images API key。
 
+建议安装后先初始化独立图片 API 配置：
+
+```bash
+node skills/gpt-image-2/scripts/init-image-env.js
+```
+
+默认会创建 `~/.config/gpt-image-2/image_env.json`，内容包含 `model_name`、`base_url`、`key`。把网关信息填好后，Claude / Codex / OpenCode 都可以读同一份配置。
+
 ### 1. 文本生图
 
 ```bash
@@ -182,6 +190,7 @@ skills/gpt-image-2/
 ├── SKILL.md                       主技能定义
 ├── scripts/
 │   ├── check-mode.js              模式 A/B/C 探测器（先跑这个）
+│   ├── init-image-env.js          创建 image_env.json/yaml 配置模板
 │   ├── generate.js                文本生图（仅 Mode A）
 │   ├── edit.js                    图像编辑 / 局部编辑（仅 Mode A）
 │   ├── auth-resolver.js           Codex-aware API key / base URL 解析
@@ -222,10 +231,48 @@ skills/gpt-image-2/
 | `OPENAI_IMAGE_MODEL` | 可选 | 默认 `gpt-image-2`，也可换成 `gpt-image-1` / `dall-e-3` 等 |
 | `OPENAI_IMAGE_AUTO_APPEND_V1` | 可选 | 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1` |
 | `CODEX_HOME` | 可选 | Codex 配置目录，默认 `~/.codex` |
+| `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | 可选 | 显式指定 `image_env.json` 或 `image_env.yaml` 路径 |
+| `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | 可选 | 跨 Claude / Codex / OpenCode 的图片 API 环境变量 |
 
 默认实现严格按 OpenAI 兼容接口工作，**不绑定**任何第三方网关。
 
-Codex-aware 识别会读取顶层 `openai_base_url`、当前 `model_provider`，以及 `[model_providers.<id>]` 下的 `base_url` 和 `env_key`。
+Codex-aware 识别会读取顶层 `openai_base_url`、当前 `model_provider`，以及 `[model_providers.<id>]` 下的 `base_url` 和 `env_key`。只有官方 OpenAI API 域名会回退读取 Codex file-based API-key 登录缓存；自定义网关不会读取 `auth.json`，请用 `env_key` 指向网关专用 key。
+
+独立配置文件示例：
+
+```json
+{
+  "model_name": "gpt-image-2",
+  "base_url": "https://api.example.com",
+  "key": "sk-..."
+}
+```
+
+也可以不用明文 key：
+
+```yaml
+model_name: gpt-image-2
+base_url: https://api.example.com
+key_env: CUSTOM_IMAGE_API_KEY
+```
+
+一旦加载到 `image_env`，它就是图片 API 的权威配置；如果 `key` 为空且 `key_env` 没有可用环境变量，脚本会提示先配置 key，不会回退到 Codex / Claude / OpenCode 的登录缓存。
+
+自定义网关推荐配置：
+
+```toml
+model_provider = "custom"
+
+[model_providers.custom]
+base_url = "https://api.example.com"
+env_key = "CUSTOM_IMAGE_API_KEY"
+```
+
+然后在 shell 或 `.gateway.env` 中设置：
+
+```bash
+CUSTOM_IMAGE_API_KEY=sk-...
+```
 
 ---
 

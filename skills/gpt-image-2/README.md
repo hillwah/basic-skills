@@ -52,6 +52,14 @@ node skills/gpt-image-2/scripts/check-mode.js
 
 The commands below (1–4) only apply in **Mode A**. Mode A first reads `OPENAI_API_KEY` / `OPENAI_BASE_URL`, then detects Codex user-level `config.toml` values such as `openai_base_url`, `model_providers.<id>.base_url`, and `env_key`. If Codex uses file-based API-key login, it also tries `$CODEX_HOME/auth.json`. ChatGPT / Codex access tokens are not treated as Images API keys.
 
+After installing the skill, initialize the standalone image API config:
+
+```bash
+node skills/gpt-image-2/scripts/init-image-env.js
+```
+
+This creates `~/.config/gpt-image-2/image_env.json` with `model_name`, `base_url`, and `key`, which Claude, Codex, OpenCode, and other SKILL.md-compatible agents can share.
+
 ### 1. Text-to-image
 
 ```bash
@@ -182,6 +190,7 @@ skills/gpt-image-2/
 ├── SKILL.md                       Main skill definition
 ├── scripts/
 │   ├── check-mode.js              Mode A/B/C detector (run this first)
+│   ├── init-image-env.js          Create an image_env.json/yaml config template
 │   ├── generate.js                Text-to-image (Mode A only)
 │   ├── edit.js                    Image edit / inpaint (Mode A only)
 │   ├── auth-resolver.js           Codex-aware API key / base URL resolver
@@ -222,10 +231,50 @@ Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gate
 | `OPENAI_IMAGE_MODEL` | optional | Default `gpt-image-2`; can be swapped for `gpt-image-1` / `dall-e-3` / etc. |
 | `OPENAI_IMAGE_AUTO_APPEND_V1` | optional | Enabled by default; set to `0` / `false` / `no` / `off` to disable automatic `/v1` appending |
 | `CODEX_HOME` | optional | Codex config directory; defaults to `~/.codex` |
+| `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | optional | Explicit `image_env.json` or `image_env.yaml` path |
+| `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | optional | Agent-agnostic image API environment variables |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
 
-Codex-aware discovery reads top-level `openai_base_url`, the selected `model_provider`, and `[model_providers.<id>]` fields `base_url` and `env_key`. If only a ChatGPT/Codex access token is available, use host-native Mode B with Codex's built-in image tool instead of direct API mode.
+Codex-aware discovery reads top-level `openai_base_url`, the selected `model_provider`, and `[model_providers.<id>]` fields `base_url` and `env_key`. Only official OpenAI API hosts fall back to the Codex file-based API-key login cache. Custom gateways never read `auth.json`; set `env_key` to a gateway-specific key. If only a ChatGPT/Codex access token is available, use host-native Mode B with Codex's built-in image tool instead of direct API mode.
+
+Recommended custom gateway config:
+
+Standalone `image_env.json`:
+
+```json
+{
+  "model_name": "gpt-image-2",
+  "base_url": "https://api.example.com",
+  "key": "sk-..."
+}
+```
+
+Or keep the key in an environment variable:
+
+```yaml
+model_name: gpt-image-2
+base_url: https://api.example.com
+key_env: CUSTOM_IMAGE_API_KEY
+```
+
+Once `image_env` is loaded, it becomes the authoritative image API config. If `key` is empty and `key_env` does not resolve to an environment variable, the scripts ask you to configure a key instead of falling back to Codex / Claude / OpenCode login caches.
+
+Codex provider config is also supported:
+
+```toml
+model_provider = "custom"
+
+[model_providers.custom]
+base_url = "https://api.example.com"
+env_key = "CUSTOM_IMAGE_API_KEY"
+```
+
+Then set the key in your shell or `.gateway.env`:
+
+```bash
+CUSTOM_IMAGE_API_KEY=sk-...
+```
 
 ---
 

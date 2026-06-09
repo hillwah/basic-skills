@@ -4,6 +4,30 @@ import { loadAmbientEnv, DEFAULT_MODEL, resolveRequestAuth } from "./shared.js";
 
 await loadAmbientEnv();
 
+function parseCli(argv) {
+  const cfg = {
+    configPath: null,
+    json: false,
+  };
+
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === "--json") {
+      cfg.json = true;
+      continue;
+    }
+    if (arg === "--config") {
+      cfg.configPath = argv[++i] || null;
+      if (!cfg.configPath) throw new Error("Missing value for --config");
+      continue;
+    }
+    throw new Error(`Unknown option: ${arg}`);
+  }
+
+  return cfg;
+}
+
+const cfg = parseCli(process.argv.slice(2));
 const TRUTHY = new Set(["1", "true", "yes", "on", "y"]);
 
 const rawFlag = String(process.env.ENABLE_GARDEN_IMAGEGEN || "").trim().toLowerCase();
@@ -11,7 +35,7 @@ const hasModeFlag = rawFlag !== "";
 const gardenEnabled = TRUTHY.has(rawFlag);
 const gardenExplicitlyDisabled = hasModeFlag && !gardenEnabled;
 
-const auth = await resolveRequestAuth({ defaultModel: DEFAULT_MODEL });
+const auth = await resolveRequestAuth({ defaultModel: DEFAULT_MODEL, configPath: cfg.configPath });
 const apiKey = auth.apiKey || "";
 const baseUrl = auth.baseUrl;
 const model = auth.model;
@@ -46,6 +70,7 @@ const result = {
   base_url: baseUrl,
   model,
   provider_id: auth.providerId,
+  image_env_path: auth.imageEnvPath || null,
   api_key_source: auth.apiKeySource || null,
   base_url_source: auth.baseUrlSource,
   model_source: auth.modelSource,
@@ -54,7 +79,7 @@ const result = {
   summary,
 };
 
-const wantJson = process.argv.includes("--json");
+const wantJson = cfg.json;
 
 if (wantJson) {
   console.log(JSON.stringify(result, null, 2));
@@ -69,6 +94,7 @@ if (wantJson) {
   console.log(`${pad("base_url")}: ${result.base_url}`);
   console.log(`${pad("model")}: ${result.model}`);
   console.log(`${pad("provider_id")}: ${result.provider_id}`);
+  console.log(`${pad("image_env_path")}: ${result.image_env_path || "(none)"}`);
   console.log(`${pad("api_key_source")}: ${result.api_key_source || "(none)"}`);
   console.log(`${pad("base_url_source")}: ${result.base_url_source}`);
   console.log(`${pad("env_flag_value")}: ${result.env_flag_value}`);

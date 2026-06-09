@@ -27,6 +27,7 @@ Options:
   --prompt-output <path>       Save the final prompt to a specific file
   --image <path>               Output image path (default: ${DEFAULT_IMAGE_DIR}/<slug>-<timestamp>.png)
   --model <name>               Model override (default: ${DEFAULT_MODEL})
+  --config <path>              image_env.json/yaml config path
   --base-url <url>             API base URL override
   --api-key-env <name>         Environment variable to read the API key from
   --size <WxH>                 Output size
@@ -47,6 +48,7 @@ function parseCli(argv) {
     promptOutput: null,
     imagePath: null,
     model: null,
+    configPath: null,
     baseUrl: null,
     apiKeyEnv: null,
     size: null,
@@ -93,6 +95,11 @@ function parseCli(argv) {
     if (arg === "--model") {
       cfg.model = argv[++i] || null;
       if (!cfg.model) throw new Error("Missing value for --model");
+      continue;
+    }
+    if (arg === "--config") {
+      cfg.configPath = argv[++i] || null;
+      if (!cfg.configPath) throw new Error("Missing value for --config");
       continue;
     }
     if (arg === "--base-url") {
@@ -179,7 +186,7 @@ async function run() {
   const outputPath = resolveOutput(cfg.imagePath, buildDefaultImagePath("generate", nameHint));
   await ensureFilesExist([], "input");
 
-  const auth = await resolveRequestAuth({ model: cfg.model, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv });
+  const auth = await resolveRequestAuth({ model: cfg.model, configPath: cfg.configPath, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv });
   const payload = buildPayload(cfg, prompt, auth);
   const url = buildRequestUrl(auth);
   const json = await postJson(url, payload, auth);
@@ -194,6 +201,7 @@ async function run() {
       requestUrl: url,
       auth: {
         providerId: auth.providerId,
+        imageEnvPath: auth.imageEnvPath,
         apiKeySource: auth.apiKeySource,
         baseUrlSource: auth.baseUrlSource,
         modelSource: auth.modelSource,
