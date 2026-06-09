@@ -34,7 +34,7 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 
 | 模式 | 触发条件 | 行为 |
 |---|---|---|
-| **A · Garden 本地生图** | `ENABLE_GARDEN_IMAGEGEN` 为真 **且** 有 `OPENAI_API_KEY` | 端到端：选模板 → 渲染 prompt → 调用 `generate.js` / `edit.js` → 图片落盘 |
+| **A · 本地 API 生图** | 找到可用于 OpenAI 兼容 Images API 的 API key，且未显式禁用 | 端到端：选模板 → 渲染 prompt → 调用 `generate.js` / `edit.js` → 图片落盘 |
 | **B · Host-Native 委托宿主出图** | 未启用 Garden，但宿主 Agent 自带图像工具（`image_generation` / `dalle` / `nano_banana` / 图像 MCP 等） | 渲染好 prompt 后**交给宿主自带的图像工具**出图 |
 | **C · Advisor 纯提示词顾问** | 未启用 Garden，宿主也没有图像工具 | 退化成"高质量 prompt 撰写顾问"——把 prompt 落盘到 `garden-gpt-image-2/prompt/`，告诉用户去 ChatGPT / Midjourney / DALL·E / Sora / Nano Banana / 自己的网关里执行 |
 
@@ -50,7 +50,7 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 node skills/gpt-image-2/scripts/check-mode.js
 ```
 
-下面 1~4 仅在 **Mode A** 下使用。
+下面 1~4 仅在 **Mode A** 下使用。Mode A 会优先读取 `OPENAI_API_KEY` / `OPENAI_BASE_URL`，也会识别 Codex 用户级 `config.toml` 里的 `openai_base_url`、`model_providers.<id>.base_url` 和 `env_key`。如果 Codex 使用 file-based API-key 登录，还会尝试从 `$CODEX_HOME/auth.json` 中读取 Platform API key；ChatGPT / Codex access token 不会被当作 Images API key。
 
 ### 1. 文本生图
 
@@ -184,6 +184,7 @@ skills/gpt-image-2/
 │   ├── check-mode.js              模式 A/B/C 探测器（先跑这个）
 │   ├── generate.js                文本生图（仅 Mode A）
 │   ├── edit.js                    图像编辑 / 局部编辑（仅 Mode A）
+│   ├── auth-resolver.js           Codex-aware API key / base URL 解析
 │   ├── shared.js                  共享请求 / 落盘 / 环境变量解析
 │   └── package.json
 └── references/
@@ -215,12 +216,16 @@ skills/gpt-image-2/
 
 | 变量 | 必需性 | 说明 |
 |---|---|---|
-| `ENABLE_GARDEN_IMAGEGEN` | Mode A 必需 | 模式开关：`1` / `true` / `yes` / `on` 启用 Mode A |
-| `OPENAI_API_KEY` | Mode A 必需 | 真正调图像 API 用 |
-| `OPENAI_BASE_URL` | 可选 | 默认 `https://api.openai.com/v1`，可指向任意 OpenAI 兼容网关 |
+| `ENABLE_GARDEN_IMAGEGEN` | 可选 | 真值会强制探测 Mode A；假值会显式禁用本地 API 生图 |
+| `OPENAI_API_KEY` | Mode A | 真正调图像 API 用的首选 key |
+| `OPENAI_BASE_URL` | 可选 | 默认 `https://api.openai.com/v1`，可指向任意 OpenAI 兼容网关；若不是以 `/v1` 结尾会自动补上 |
 | `OPENAI_IMAGE_MODEL` | 可选 | 默认 `gpt-image-2`，也可换成 `gpt-image-1` / `dall-e-3` 等 |
+| `OPENAI_IMAGE_AUTO_APPEND_V1` | 可选 | 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1` |
+| `CODEX_HOME` | 可选 | Codex 配置目录，默认 `~/.codex` |
 
 默认实现严格按 OpenAI 兼容接口工作，**不绑定**任何第三方网关。
+
+Codex-aware 识别会读取顶层 `openai_base_url`、当前 `model_provider`，以及 `[model_providers.<id>]` 下的 `base_url` 和 `env_key`。
 
 ---
 

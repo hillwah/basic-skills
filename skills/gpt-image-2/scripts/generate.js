@@ -10,6 +10,7 @@ import {
   printJson,
   readPromptInput,
   resolveOutput,
+  resolveRequestAuth,
   saveImage,
   savePrompt,
   postJson,
@@ -26,6 +27,8 @@ Options:
   --prompt-output <path>       Save the final prompt to a specific file
   --image <path>               Output image path (default: ${DEFAULT_IMAGE_DIR}/<slug>-<timestamp>.png)
   --model <name>               Model override (default: ${DEFAULT_MODEL})
+  --base-url <url>             API base URL override
+  --api-key-env <name>         Environment variable to read the API key from
   --size <WxH>                 Output size
   --n <count>                  Number of images
   --quality <level>            auto | high | medium | low
@@ -44,6 +47,8 @@ function parseCli(argv) {
     promptOutput: null,
     imagePath: null,
     model: null,
+    baseUrl: null,
+    apiKeyEnv: null,
     size: null,
     n: null,
     quality: null,
@@ -90,6 +95,16 @@ function parseCli(argv) {
       if (!cfg.model) throw new Error("Missing value for --model");
       continue;
     }
+    if (arg === "--base-url") {
+      cfg.baseUrl = argv[++i] || null;
+      if (!cfg.baseUrl) throw new Error("Missing value for --base-url");
+      continue;
+    }
+    if (arg === "--api-key-env") {
+      cfg.apiKeyEnv = argv[++i] || null;
+      if (!cfg.apiKeyEnv) throw new Error("Missing value for --api-key-env");
+      continue;
+    }
     if (arg === "--size") {
       cfg.size = argv[++i] || null;
       if (!cfg.size) throw new Error("Missing value for --size");
@@ -131,10 +146,10 @@ function parseCli(argv) {
   return cfg;
 }
 
-function buildPayload(cfg, prompt) {
+function buildPayload(cfg, prompt, auth) {
   const payload = {
     prompt,
-    model: cfg.model || process.env.OPENAI_IMAGE_MODEL || DEFAULT_MODEL,
+    model: auth.model,
   };
   if (cfg.size) payload.size = cfg.size;
   if (cfg.n) payload.n = Number(cfg.n);
@@ -146,8 +161,8 @@ function buildPayload(cfg, prompt) {
   return payload;
 }
 
-function buildRequestUrl() {
-  return `${buildBaseUrl()}/images/generations`;
+function buildRequestUrl(auth) {
+  return `${buildBaseUrl(auth)}/images/generations`;
 }
 
 async function run() {
@@ -164,9 +179,10 @@ async function run() {
   const outputPath = resolveOutput(cfg.imagePath, buildDefaultImagePath("generate", nameHint));
   await ensureFilesExist([], "input");
 
-  const payload = buildPayload(cfg, prompt);
-  const url = buildRequestUrl();
-  const json = await postJson(url, payload);
+  const auth = await resolveRequestAuth({ model: cfg.model, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv });
+  const payload = buildPayload(cfg, prompt, auth);
+  const url = buildRequestUrl(auth);
+  const json = await postJson(url, payload, auth);
   const bytes = await extractGeneratedBytes(json);
   await saveImage(outputPath, bytes);
 
@@ -176,6 +192,12 @@ async function run() {
       savedPrompt: promptPath,
       model: payload.model,
       requestUrl: url,
+      auth: {
+        providerId: auth.providerId,
+        apiKeySource: auth.apiKeySource,
+        baseUrlSource: auth.baseUrlSource,
+        modelSource: auth.modelSource,
+      },
       apiResponse: json,
     });
     return;

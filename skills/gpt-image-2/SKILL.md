@@ -29,9 +29,9 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 
 输出会给出 `mode = A` / `A?` / `B-or-C` 以及 `recommendation`。三个模式定义如下：
 
-### Mode A · Garden 本地生图
+### Mode A · 本地 API 生图
 
-**触发条件**：环境变量 `ENABLE_GARDEN_IMAGEGEN` 为真（`1` / `true` / `yes` / `on`）**且** 存在 `OPENAI_API_KEY`。
+**触发条件**：存在可用于 OpenAI 兼容 Images API 的 API key。来源可以是 `OPENAI_API_KEY`、Codex `config.toml` 中 provider 的 `env_key`、`CODEX_API_KEY`，或 Codex file-based API-key 登录缓存。`ENABLE_GARDEN_IMAGEGEN=0` / `false` 可显式禁用本地 API 生图。
 
 **行为**：完整端到端跑通"选模板 → 写 prompt → 调用脚本 → 出图落盘"。
 
@@ -71,8 +71,8 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 
 | 条件 | 模式 | 调用脚本？ | 落盘 prompt？ | 落盘图片？ |
 |---|---|---|---|---|
-| `ENABLE_GARDEN_IMAGEGEN=1` + 有 KEY | **A** | ✅ `generate.js` / `edit.js` | ✅ 自动 | ✅ 自动 |
-| `ENABLE_GARDEN_IMAGEGEN=1` 但没 KEY | A? | ❌（先要 KEY） | — | — |
+| 找到 API key 且未显式禁用 | **A** | ✅ `generate.js` / `edit.js` | ✅ 自动 | ✅ 自动 |
+| `ENABLE_GARDEN_IMAGEGEN=1` 但没 KEY | A? | ❌（先配置 KEY） | — | — |
 | 未启用 + 宿主有图像工具 | **B** | ❌（用宿主工具） | 可选 | 由宿主决定 |
 | 未启用 + 宿主无图像工具 | **C** | ❌ | ✅ 必须 | ❌（无法） |
 
@@ -95,6 +95,7 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 - `scripts/generate.js`：文本生图（仅 Mode A 使用）
 - `scripts/edit.js`：基于原图 / 遮罩改图（仅 Mode A 使用）
 - `scripts/shared.js`：共享请求、保存、环境变量读取逻辑
+- `scripts/auth-resolver.js`：Codex-aware API key / base URL 解析逻辑
 - `references/`：分层结构化提示词模板（A / B / C 三模式都用）
 
 ## 环境变量
@@ -106,13 +107,24 @@ node skills/gpt-image-2/scripts/check-mode.js --json
 3. `<cwd>/.env`
 4. `<cwd>/.gateway.env`
 5. `~/.gateway.env`
+6. `$CODEX_HOME/config.toml` 或 `~/.codex/config.toml`
+7. `$CODEX_HOME/auth.json` 或 `~/.codex/auth.json` 中的 file-based API-key 登录缓存
 
 核心变量：
 
-- `ENABLE_GARDEN_IMAGEGEN` — **模式开关**。`1` / `true` / `yes` / `on` 时启用 Mode A；未设置或其它值则进入 Mode B / C。
-- `OPENAI_API_KEY` — Mode A 必需；B / C 不需要。
-- `OPENAI_BASE_URL` — 默认 `https://api.openai.com/v1`，可指向第三方兼容网关。
+- `ENABLE_GARDEN_IMAGEGEN` — **模式开关**。`0` / `false` 等假值会显式禁用 Mode A；`1` / `true` / `yes` / `on` 会强制尝试 Mode A。
+- `OPENAI_API_KEY` — Mode A 可用的首选 API key；B / C 不需要。
+- `OPENAI_BASE_URL` — 默认 `https://api.openai.com/v1`，可指向第三方兼容网关；如果不是以 `/v1` 结尾，脚本会自动追加 `/v1` 以兼容 Codex provider 写法。
 - `OPENAI_IMAGE_MODEL` — 默认 `gpt-image-2`，可换成网关支持的型号（如 `gpt-image-1` / `dall-e-3`）。
+- `OPENAI_IMAGE_AUTO_APPEND_V1` — 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1`。
+- `CODEX_HOME` — Codex 配置目录，未设置时默认 `~/.codex`。
+
+Codex 配置识别：
+
+- 读取顶层 `openai_base_url`。
+- 读取当前 `model_provider` 对应的 `[model_providers.<id>]`，支持 `base_url` 和 `env_key`。
+- 若 Codex 使用 file-based API-key 登录，脚本会从 `auth.json` 中寻找 Platform API key。
+- ChatGPT / Codex access token 不会被当作 Images API key 使用；如果当前 Codex 宿主自带 `$imagegen`，应走 Mode B 让宿主工具使用 Codex 额度。
 
 默认实现按 OpenAI 兼容接口工作，不写死任何第三方网关。
 

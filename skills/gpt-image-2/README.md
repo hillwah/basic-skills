@@ -34,7 +34,7 @@ The output picks one of three modes:
 
 | Mode | Trigger | Behavior |
 |---|---|---|
-| **A — Garden local** | `ENABLE_GARDEN_IMAGEGEN` truthy **AND** `OPENAI_API_KEY` present | End-to-end: pick template → render prompt → call `generate.js` / `edit.js` → image lands on disk |
+| **A — Local API** | An OpenAI-compatible Images API key is available and local API generation is not explicitly disabled | End-to-end: pick template → render prompt → call `generate.js` / `edit.js` → image lands on disk |
 | **B — Host-native** | Garden disabled, but the host agent already has an image tool (`image_generation`, `dalle`, `nano_banana`, image MCP, etc.) | Render the prompt, then **delegate** image generation to the host's own tool |
 | **C — Advisor** | Garden disabled, host has no image tool | Skill degrades into a high-quality prompt writer — saves the rendered prompt to `garden-gpt-image-2/prompt/` and instructs the user to paste it into ChatGPT / Midjourney / DALL·E / Sora / Nano Banana / their own gateway |
 
@@ -50,7 +50,7 @@ In all three modes, prompt files are saved (mode A & C must save, mode B is reco
 node skills/gpt-image-2/scripts/check-mode.js
 ```
 
-The commands below (1–4) only apply in **Mode A**.
+The commands below (1–4) only apply in **Mode A**. Mode A first reads `OPENAI_API_KEY` / `OPENAI_BASE_URL`, then detects Codex user-level `config.toml` values such as `openai_base_url`, `model_providers.<id>.base_url`, and `env_key`. If Codex uses file-based API-key login, it also tries `$CODEX_HOME/auth.json`. ChatGPT / Codex access tokens are not treated as Images API keys.
 
 ### 1. Text-to-image
 
@@ -184,6 +184,7 @@ skills/gpt-image-2/
 │   ├── check-mode.js              Mode A/B/C detector (run this first)
 │   ├── generate.js                Text-to-image (Mode A only)
 │   ├── edit.js                    Image edit / inpaint (Mode A only)
+│   ├── auth-resolver.js           Codex-aware API key / base URL resolver
 │   ├── shared.js                  Shared request, save, env-resolution logic
 │   └── package.json
 └── references/
@@ -211,16 +212,20 @@ skills/gpt-image-2/
 
 ## Environment variables
 
-Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gateway.env` → `~/.gateway.env`.
+Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gateway.env` → `~/.gateway.env` → `$CODEX_HOME/config.toml` / `~/.codex/config.toml` → file-based Codex API-key login cache.
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `ENABLE_GARDEN_IMAGEGEN` | Mode A | Master switch for Mode A (`1` / `true` / `yes` / `on`) |
-| `OPENAI_API_KEY` | Mode A | Required for actual image API calls |
-| `OPENAI_BASE_URL` | optional | Default `https://api.openai.com/v1`; can point to any OpenAI-compatible gateway |
+| `ENABLE_GARDEN_IMAGEGEN` | optional | Truthy values force Mode A probing; falsey values explicitly disable local API generation |
+| `OPENAI_API_KEY` | Mode A | Preferred API key for actual image API calls |
+| `OPENAI_BASE_URL` | optional | Default `https://api.openai.com/v1`; can point to any OpenAI-compatible gateway and auto-appends `/v1` when missing |
 | `OPENAI_IMAGE_MODEL` | optional | Default `gpt-image-2`; can be swapped for `gpt-image-1` / `dall-e-3` / etc. |
+| `OPENAI_IMAGE_AUTO_APPEND_V1` | optional | Enabled by default; set to `0` / `false` / `no` / `off` to disable automatic `/v1` appending |
+| `CODEX_HOME` | optional | Codex config directory; defaults to `~/.codex` |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
+
+Codex-aware discovery reads top-level `openai_base_url`, the selected `model_provider`, and `[model_providers.<id>]` fields `base_url` and `env_key`. If only a ChatGPT/Codex access token is available, use host-native Mode B with Codex's built-in image tool instead of direct API mode.
 
 ---
 

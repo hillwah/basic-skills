@@ -1,7 +1,7 @@
 import process from "node:process";
 import { readFile } from "node:fs/promises";
 import {
-    DEFAULT_IMAGE_DIR,
+  DEFAULT_IMAGE_DIR,
   DEFAULT_MODEL,
   appendIfPresent,
   buildBaseUrl,
@@ -14,6 +14,7 @@ import {
   printJson,
   readPromptInput,
   resolveOutput,
+  resolveRequestAuth,
   saveImage,
   savePrompt,
   slugify,
@@ -31,6 +32,8 @@ Options:
   --prompt-output <path>       Save the final prompt to a specific file
   --output <path>              Output image path (default: ${DEFAULT_IMAGE_DIR}/<slug>-<timestamp>.png)
   --model <name>               Model override (default: ${DEFAULT_MODEL})
+  --base-url <url>             API base URL override
+  --api-key-env <name>         Environment variable to read the API key from
   --size <WxH|auto>            Output size
   --n <count>                  Number of images
   --quality <level>            auto | high | medium | low
@@ -52,6 +55,8 @@ function parseCli(argv) {
     promptOutput: null,
     output: null,
     model: null,
+    baseUrl: null,
+    apiKeyEnv: null,
     size: null,
     n: null,
     quality: null,
@@ -109,6 +114,16 @@ function parseCli(argv) {
       if (!cfg.model) throw new Error("Missing value for --model");
       continue;
     }
+    if (arg === "--base-url") {
+      cfg.baseUrl = argv[++i] || null;
+      if (!cfg.baseUrl) throw new Error("Missing value for --base-url");
+      continue;
+    }
+    if (arg === "--api-key-env") {
+      cfg.apiKeyEnv = argv[++i] || null;
+      if (!cfg.apiKeyEnv) throw new Error("Missing value for --api-key-env");
+      continue;
+    }
     if (arg === "--size") {
       cfg.size = argv[++i] || null;
       if (!cfg.size) throw new Error("Missing value for --size");
@@ -155,11 +170,11 @@ function parseCli(argv) {
   return cfg;
 }
 
-function buildRequestUrl() {
-  return `${buildBaseUrl()}/images/edits`;
+function buildRequestUrl(auth) {
+  return `${buildBaseUrl(auth)}/images/edits`;
 }
 
-async function buildForm(cfg, prompt) {
+async function buildForm(cfg, prompt, auth) {
   const form = new FormData();
   const imagePath = cfg.image;
   const imageBytes = await readFile(imagePath);
@@ -171,7 +186,7 @@ async function buildForm(cfg, prompt) {
   }
 
   form.append("prompt", prompt);
-  form.append("model", cfg.model || process.env.OPENAI_IMAGE_MODEL || DEFAULT_MODEL);
+  form.append("model", auth.model);
   appendIfPresent(form, "size", cfg.size);
   appendIfPresent(form, "n", cfg.n);
   appendIfPresent(form, "quality", cfg.quality);
@@ -198,9 +213,10 @@ async function run() {
   const nameHint = slugify(prompt.split(/\s+/).slice(0, 8).join(" "), "edited-image");
   const promptPath = await savePrompt(prompt, cfg.promptOutput, nameHint);
   const outputPath = resolveOutput(cfg.output, buildDefaultImagePath("edit", nameHint));
-  const form = await buildForm(cfg, prompt);
-  const url = buildRequestUrl();
-  const json = await postMultipart(url, form);
+  const auth = await resolveRequestAuth({ model: cfg.model, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv });
+  const form = await buildForm(cfg, prompt, auth);
+  const url = buildRequestUrl(auth);
+  const json = await postMultipart(url, form, auth);
   const bytes = await extractGeneratedBytes(json);
   await saveImage(outputPath, bytes);
 
@@ -208,8 +224,14 @@ async function run() {
     printJson({
       savedImage: outputPath,
       savedPrompt: promptPath,
-      model: cfg.model || process.env.OPENAI_IMAGE_MODEL || DEFAULT_MODEL,
+      model: auth.model,
       requestUrl: url,
+      auth: {
+        providerId: auth.providerId,
+        apiKeySource: auth.apiKeySource,
+        baseUrlSource: auth.baseUrlSource,
+        modelSource: auth.modelSource,
+      },
       apiResponse: json,
     });
     return;

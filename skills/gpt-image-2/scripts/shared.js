@@ -2,6 +2,7 @@ import path from "node:path";
 import process from "node:process";
 import { homedir } from "node:os";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { resolveImageApiAuth } from "./auth-resolver.js";
 
 export const DEFAULT_IMAGE_DIR = "garden-gpt-image-2/image";
 export const DEFAULT_PROMPT_DIR = "garden-gpt-image-2/prompt";
@@ -134,18 +135,25 @@ export async function encodeImages(files) {
   return images;
 }
 
-export function buildBaseUrl() {
-  return (process.env.OPENAI_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
+export async function resolveRequestAuth(options = {}) {
+  return resolveImageApiAuth({ defaultModel: DEFAULT_MODEL, ...options });
 }
 
-export function requireApiKey() {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is required.");
+export function buildBaseUrl(auth) {
+  return (auth?.baseUrl || process.env.OPENAI_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
+}
+
+export function requireApiKey(auth) {
+  const apiKey = auth?.apiKey || process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    const details = auth?.diagnostics?.length ? ` ${auth.diagnostics.join(" ")}` : "";
+    throw new Error(`OpenAI-compatible API key is required. Set OPENAI_API_KEY, configure a Codex provider env_key, or sign in to Codex with API-key auth.${details}`);
+  }
   return apiKey;
 }
 
-export async function postJson(url, payload) {
-  const apiKey = requireApiKey();
+export async function postJson(url, payload, auth) {
+  const apiKey = requireApiKey(auth);
   const res = await fetch(url, {
     method: "POST",
     headers: {
@@ -163,8 +171,8 @@ export async function postJson(url, payload) {
   return res.json();
 }
 
-export async function postMultipart(url, form) {
-  const apiKey = requireApiKey();
+export async function postMultipart(url, form, auth) {
+  const apiKey = requireApiKey(auth);
   const res = await fetch(url, {
     method: "POST",
     headers: {
