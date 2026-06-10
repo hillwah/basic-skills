@@ -58,7 +58,7 @@ After installing the skill, initialize the standalone image API config:
 node skills/gpt-image-2/scripts/init-image-env.js
 ```
 
-This creates `~/.config/gpt-image-2/image_env.json` with `model_name`, `base_url`, and `key`, which Claude, Codex, OpenCode, and other SKILL.md-compatible agents can share.
+This creates `$CODEX_HOME/image_env.json`; when `CODEX_HOME` is unset, it uses `.codex/image_env.json` under the user's home directory (`~/.codex/image_env.json` on macOS / Linux, `%USERPROFILE%\.codex\image_env.json` on Windows). The file contains `model_name`, `base_url`, and `key`, which Claude, Codex, OpenCode, and other SKILL.md-compatible agents can share.
 
 ### 1. Text-to-image
 
@@ -230,13 +230,15 @@ Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gate
 | `OPENAI_BASE_URL` | optional | Default `https://api.openai.com/v1`; can point to any OpenAI-compatible gateway and auto-appends `/v1` when missing |
 | `OPENAI_IMAGE_MODEL` | optional | Default `gpt-image-2`; can be swapped for `gpt-image-1` / `dall-e-3` / etc. |
 | `OPENAI_IMAGE_AUTO_APPEND_V1` | optional | Enabled by default; set to `0` / `false` / `no` / `off` to disable automatic `/v1` appending |
-| `CODEX_HOME` | optional | Codex config directory; defaults to `~/.codex` |
+| `CODEX_HOME` | optional | Codex config directory; defaults to `.codex` under the user's home directory on macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | optional | Explicit `image_env.json` or `image_env.yaml` path |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | optional | Agent-agnostic image API environment variables |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
 
 Codex-aware discovery reads top-level `openai_base_url`, the selected `model_provider`, and `[model_providers.<id>]` fields `base_url` and `env_key`. Only official OpenAI API hosts fall back to the Codex file-based API-key login cache. Custom gateways never read `auth.json`; set `env_key` to a gateway-specific key. If only a ChatGPT/Codex access token is available, use host-native Mode B with Codex's built-in image tool instead of direct API mode.
+
+If you do not want to run the init command, create `image_env.json` in the Codex config directory. The default path is `~/.codex/image_env.json` on macOS / Linux and `%USERPROFILE%\.codex\image_env.json` on Windows; when `CODEX_HOME` is set, use `$CODEX_HOME/image_env.json`.
 
 Recommended custom gateway config:
 

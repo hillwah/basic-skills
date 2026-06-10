@@ -43,7 +43,7 @@ function printHelp() {
   node skills/gpt-image-2/scripts/init-image-env.js
 
 Options:
-  --output <path>     Config path (default: ~/.config/gpt-image-2/image_env.json)
+  --output <path>     Config path (default: $CODEX_HOME/image_env.json or ~/.codex/image_env.json)
   --format <json|yaml>
   --force             Overwrite existing file
   -h, --help          Show help`);

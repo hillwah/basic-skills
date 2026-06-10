@@ -58,7 +58,7 @@ node skills/gpt-image-2/scripts/check-mode.js
 node skills/gpt-image-2/scripts/init-image-env.js
 ```
 
-默认会创建 `~/.config/gpt-image-2/image_env.json`，内容包含 `model_name`、`base_url`、`key`。把网关信息填好后，Claude / Codex / OpenCode 都可以读同一份配置。
+默认会创建 `$CODEX_HOME/image_env.json`；未设置 `CODEX_HOME` 时，macOS / Linux 是 `~/.codex/image_env.json`，Windows 是 `%USERPROFILE%\.codex\image_env.json`。内容包含 `model_name`、`base_url`、`key`。把网关信息填好后，Claude / Codex / OpenCode 都可以读同一份配置。
 
 ### 1. 文本生图
 
@@ -230,13 +230,15 @@ skills/gpt-image-2/
 | `OPENAI_BASE_URL` | 可选 | 默认 `https://api.openai.com/v1`，可指向任意 OpenAI 兼容网关；若不是以 `/v1` 结尾会自动补上 |
 | `OPENAI_IMAGE_MODEL` | 可选 | 默认 `gpt-image-2`，也可换成 `gpt-image-1` / `dall-e-3` 等 |
 | `OPENAI_IMAGE_AUTO_APPEND_V1` | 可选 | 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1` |
-| `CODEX_HOME` | 可选 | Codex 配置目录，默认 `~/.codex` |
+| `CODEX_HOME` | 可选 | Codex 配置目录；默认是用户主目录下的 `.codex`，兼容 macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | 可选 | 显式指定 `image_env.json` 或 `image_env.yaml` 路径 |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | 可选 | 跨 Claude / Codex / OpenCode 的图片 API 环境变量 |
 
 默认实现严格按 OpenAI 兼容接口工作，**不绑定**任何第三方网关。
 
 Codex-aware 识别会读取顶层 `openai_base_url`、当前 `model_provider`，以及 `[model_providers.<id>]` 下的 `base_url` 和 `env_key`。只有官方 OpenAI API 域名会回退读取 Codex file-based API-key 登录缓存；自定义网关不会读取 `auth.json`，请用 `env_key` 指向网关专用 key。
+
+如果不想运行初始化命令，也可以直接在 Codex 配置目录创建 `image_env.json`。默认路径：macOS / Linux 为 `~/.codex/image_env.json`，Windows 为 `%USERPROFILE%\.codex\image_env.json`。如果设置了 `CODEX_HOME`，则读取 `$CODEX_HOME/image_env.json`。
 
 独立配置文件示例：
 

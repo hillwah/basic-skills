@@ -110,7 +110,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
 3. `<cwd>/.env`
 4. `<cwd>/.gateway.env`
 5. `~/.gateway.env`
-6. 独立 `image_env.json` / `image_env.yaml`
+6. 独立 `image_env.json` / `image_env.yaml`（优先 `$CODEX_HOME/image_env.json`；未设置时使用当前系统用户主目录下的 `.codex/image_env.json`）
 7. `$CODEX_HOME/config.toml` 或 `~/.codex/config.toml`
 8. `$CODEX_HOME/auth.json` 或 `~/.codex/auth.json` 中的 file-based API-key 登录缓存（仅官方 OpenAI API 域名）
 
@@ -121,7 +121,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
 - `OPENAI_BASE_URL` — 默认 `https://api.openai.com/v1`，可指向第三方兼容网关；如果不是以 `/v1` 结尾，脚本会自动追加 `/v1` 以兼容 Codex provider 写法。
 - `OPENAI_IMAGE_MODEL` — 默认 `gpt-image-2`，可换成网关支持的型号（如 `gpt-image-1` / `dall-e-3`）。
 - `OPENAI_IMAGE_AUTO_APPEND_V1` — 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1`。
-- `CODEX_HOME` — Codex 配置目录，未设置时默认 `~/.codex`。
+- `CODEX_HOME` — Codex 配置目录，未设置时默认用户主目录下的 `.codex`（macOS / Linux: `~/.codex`；Windows: `%USERPROFILE%\.codex`）。
 - `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` — 显式指定 `image_env.json` 或 `image_env.yaml` 路径。
 - `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` — agent-agnostic 环境变量，优先级高于 `image_env`。
 
@@ -135,8 +135,9 @@ node skills/gpt-image-2/scripts/init-image-env.js
 }
 ```
 
-默认用户级路径为 `~/.config/gpt-image-2/image_env.json`。也支持：
+Codex 用户优先路径为 `$CODEX_HOME/image_env.json`。未设置 `CODEX_HOME` 时，macOS / Linux 为 `~/.codex/image_env.json`，Windows 为 `%USERPROFILE%\.codex\image_env.json`。也支持：
 
+- `$CODEX_HOME/image_env.yaml`
 - `~/.config/gpt-image-2/image_env.yaml`
 - `~/.gpt-image-2/image_env.json`
 - `<cwd>/.gpt-image-2/image_env.json`

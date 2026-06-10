@@ -115,8 +115,12 @@ async function readToml(filePath) {
   }
 }
 
+export function defaultCodexHome(home = homedir(), pathModule = path) {
+  return pathModule.join(home, ".codex");
+}
+
 function codexHome() {
-  return process.env.CODEX_HOME || path.join(homedir(), ".codex");
+  return process.env.CODEX_HOME || defaultCodexHome();
 }
 
 function configHome() {
@@ -166,17 +170,17 @@ function imageEnvConfigCandidates(options = {}) {
   if (explicit) return [path.resolve(explicit)];
 
   const agentDirs = [
-    process.env.CODEX_HOME,
+    codexHome(),
     process.env.CLAUDE_CONFIG_DIR,
     process.env.OPENCODE_CONFIG_DIR,
   ].filter(Boolean);
 
   const dirs = [
+    ...agentDirs,
     path.join(process.cwd(), ".gpt-image-2"),
     process.cwd(),
     path.join(configHome(), "gpt-image-2"),
     path.join(homedir(), ".gpt-image-2"),
-    ...agentDirs,
   ];
 
   return dirs.flatMap((dir) => [
@@ -187,7 +191,7 @@ function imageEnvConfigCandidates(options = {}) {
 }
 
 export function defaultImageEnvConfigPath() {
-  return path.join(configHome(), "gpt-image-2", `${CONFIG_BASENAME}.json`);
+  return path.join(codexHome(), `${CONFIG_BASENAME}.json`);
 }
 
 export async function loadImageEnvConfig(options = {}) {
