@@ -139,7 +139,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
 - `CODEX_HOME` — Codex 配置目录，未设置时默认用户主目录下的 `.codex`（macOS / Linux: `~/.codex`；Windows: `%USERPROFILE%\.codex`）。
 - `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` — 显式指定 `image_env.json` 或 `image_env.yaml` 路径。
 - `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` — agent-agnostic 环境变量，优先级高于 `image_env`。
-- `GPT_IMAGE_HTTP_CLIENT` — `curl` / `fetch` / `auto`，默认 `curl`。中转网关下 Node fetch 容易 502 时，直接使用本机 curl，避免先失败一次。
+- `GPT_IMAGE_HTTP_CLIENT` — `fetch` / `curl` / `auto`，默认 `fetch`。只有明确出现 Node fetch HTTP/network 错误时，才切换 `curl` 或 `auto`。
 - `GPT_IMAGE_USER_AGENT` — API 请求的 User-Agent，默认 `codex`。
 
 独立配置文件：
@@ -149,7 +149,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "curl",
+  "http_client": "fetch",
   "user_agent": "codex"
 }
 ```
@@ -171,7 +171,7 @@ Codex 用户优先路径为 `$CODEX_HOME/image_env.json`。未设置 `CODEX_HOME
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: curl
+http_client: fetch
 user_agent: codex
 ```
 
@@ -179,8 +179,9 @@ user_agent: codex
 
 中转网关排查：
 
-- 纯文本生图支持 `http_client`：`curl` 使用本机 curl，`fetch` 使用 Node fetch，`auto` 先 fetch 失败后再 curl。默认建议 `curl`，避免 Node fetch 在部分中转网关上先失败一次。
-- 如果确认网关兼容 Node fetch，可以在 `image_env` 中设 `"http_client": "fetch"`；如果需要自动回退，可设 `"http_client": "auto"`。
+- 纯文本生图支持 `http_client`：`fetch` 使用 Node fetch，`curl` 使用本机 curl，`auto` 先 fetch 失败后再 curl。默认建议 `fetch`。
+- GPT Image 生成可能耗时 20-120 秒；如果 Codex 工具返回 process/session still running，要继续轮询等待，不要把长耗时误判为 Node fetch 失败。
+- 只有出现明确的 `Image API fetch error (...)`、`fetch failed`、连接断开等错误时，才在 `image_env` 中设 `"http_client": "curl"` 或 `"http_client": "auto"`。
 - 确认网关支持 `/v1/images/generations` 和 `/v1/images/edits`，且模型映射允许 `gpt-image-2`。
 - nginx 反代图片接口建议提高 `proxy_read_timeout` / `proxy_send_timeout`，并为图片编辑提高 `client_max_body_size`。
 

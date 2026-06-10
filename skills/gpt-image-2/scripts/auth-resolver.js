@@ -129,7 +129,7 @@ export async function resolveImageApiAuth(options = {}) {
   const imageEnvKeyName = pickConfigValue(imageEnv.config, ["key_env", "keyEnv", "env_key", "envKey"]);
   const envKeyName = options.apiKeyEnv || process.env.GPT_IMAGE_API_KEY_ENV || imageEnvKeyName || "OPENAI_API_KEY";
   const imageEnvHttpClient = pickConfigValue(imageEnv.config, ["http_client", "httpClient", "client"]);
-  const httpClient = String(options.httpClient || process.env.GPT_IMAGE_HTTP_CLIENT || imageEnvHttpClient || "curl").toLowerCase();
+  const httpClient = String(options.httpClient || process.env.GPT_IMAGE_HTTP_CLIENT || imageEnvHttpClient || "fetch").toLowerCase();
   if (!["curl", "fetch", "auto"].includes(httpClient)) {
     throw new Error(`Invalid image API http_client "${httpClient}". Use "curl", "fetch", or "auto".`);
   }

@@ -18,6 +18,7 @@ import {
   saveImage,
   savePrompt,
   slugify,
+  summarizeImageApiResponse,
 } from "./shared.js";
 
 function printHelp() {
@@ -243,7 +244,7 @@ async function run() {
         userAgent: auth.userAgent,
         directApi: auth.directApi,
       },
-      apiResponse: json,
+      apiResponse: summarizeImageApiResponse(json),
     });
     return;
   }

@@ -1,6 +1,6 @@
 {
   "name": "gpt-image-2",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "category": "Image Generation / Prompt Engineering",
   "description": "Focused image generation and editing skill for GPT Image 2 and OpenAI-compatible image APIs. Uses explicit image_env or environment API configuration without reading Codex config/auth, plus host-native delegation and advisor-only fallback with 18 visual categories and 80+ structured prompt templates.",
   "homepage": "https://github.com/ConardLi/garden-skills/tree/main/skills/gpt-image-2",

@@ -235,7 +235,7 @@ skills/gpt-image-2/
 | `CODEX_HOME` | 可选 | Codex 配置目录；默认是用户主目录下的 `.codex`，兼容 macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | 可选 | 显式指定 `image_env.json` 或 `image_env.yaml` 路径 |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | 可选 | 跨 Claude / Codex / OpenCode 的图片 API 环境变量 |
-| `GPT_IMAGE_HTTP_CLIENT` | 可选 | `curl` / `fetch` / `auto`；默认 `curl`。中转网关下 Node fetch 容易 502 时，直接使用本机 curl |
+| `GPT_IMAGE_HTTP_CLIENT` | 可选 | `fetch` / `curl` / `auto`；默认 `fetch`。只有明确出现 Node fetch HTTP/network 错误时，才切换 `curl` 或 `auto` |
 | `GPT_IMAGE_USER_AGENT` | 可选 | API 请求的 User-Agent，默认 `codex` |
 
 默认实现严格按 OpenAI 兼容接口工作，**不绑定**任何第三方网关。
@@ -251,7 +251,7 @@ skills/gpt-image-2/
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "curl",
+  "http_client": "fetch",
   "user_agent": "codex"
 }
 ```
@@ -262,7 +262,7 @@ skills/gpt-image-2/
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: curl
+http_client: fetch
 user_agent: codex
 ```
 
@@ -272,7 +272,7 @@ user_agent: codex
 
 如果 `curl` 能通，但 skill 内请求偶发 `502`，通常不是 key 读取问题，而是网关链路差异：
 
-- 默认使用 `http_client: "curl"`，避免 Node fetch 经中转网关先失败一次。只有确认网关兼容 Node fetch 时，才改成 `fetch`；需要自动回退时可设为 `auto`。
+- 默认使用 `http_client: "fetch"`。GPT Image 生成可能耗时 20-120 秒，如果 Codex 工具显示进程仍在运行，要继续等待，不要把长耗时误判为 Node fetch 失败。只有出现明确的 `Image API fetch error (...)`、`fetch failed`、连接断开等错误时，才改成 `curl` 或 `auto`。
 - 确认 sub2api 支持 `POST /v1/images/generations` 和 `POST /v1/images/edits`，而不是只转发 chat / responses 端点。
 - 确认模型映射里允许 `gpt-image-2`，或把 `model_name` 改成 sub2api 实际支持的模型名。
 - nginx 建议为图片接口放宽超时和体积限制：

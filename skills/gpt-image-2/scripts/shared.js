@@ -300,6 +300,29 @@ export async function extractGeneratedBytes(json) {
   throw new Error("API response did not include b64_json or url.");
 }
 
+export function summarizeImageApiResponse(json) {
+  const data = Array.isArray(json?.data)
+    ? json.data.map((item) => {
+        const summary = {};
+        for (const [key, value] of Object.entries(item || {})) {
+          if (key === "b64_json" && typeof value === "string") {
+            summary.b64_json = `[base64 omitted, length=${value.length}]`;
+          } else if (typeof value === "string" && value.length > 1000) {
+            summary[key] = `${value.slice(0, 1000)}...`;
+          } else {
+            summary[key] = value;
+          }
+        }
+        return summary;
+      })
+    : json?.data;
+
+  return {
+    ...json,
+    data,
+  };
+}
+
 export async function saveImage(outputPath, bytes) {
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, bytes);

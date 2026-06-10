@@ -54,7 +54,7 @@ function template(format) {
     model_name: "gpt-image-2",
     base_url: "https://api.openai.com/v1",
     key: "",
-    http_client: "curl",
+    http_client: "fetch",
     user_agent: "codex",
   };
 
@@ -63,7 +63,7 @@ function template(format) {
       "model_name: gpt-image-2",
       "base_url: https://api.openai.com/v1",
       "key: \"\"",
-      "http_client: curl",
+      "http_client: fetch",
       "user_agent: codex",
       "",
     ].join("\n");

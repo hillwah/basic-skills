@@ -235,7 +235,7 @@ Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gate
 | `CODEX_HOME` | optional | Codex config directory; defaults to `.codex` under the user's home directory on macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | optional | Explicit `image_env.json` or `image_env.yaml` path |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | optional | Agent-agnostic image API environment variables |
-| `GPT_IMAGE_HTTP_CLIENT` | optional | `curl` / `fetch` / `auto`; default `curl`. Use local curl by default when relays do not like Node fetch |
+| `GPT_IMAGE_HTTP_CLIENT` | optional | `fetch` / `curl` / `auto`; default `fetch`. Switch to `curl` or `auto` only after a clear Node fetch HTTP/network error |
 | `GPT_IMAGE_USER_AGENT` | optional | API request User-Agent; default `codex` |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
@@ -253,7 +253,7 @@ Standalone `image_env.json`:
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "curl",
+  "http_client": "fetch",
   "user_agent": "codex"
 }
 ```
@@ -264,7 +264,7 @@ Or keep the key in an environment variable:
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: curl
+http_client: fetch
 user_agent: codex
 ```
 
@@ -274,7 +274,7 @@ Once `image_env` is loaded, it becomes the authoritative image API config and Di
 
 If direct `curl` works but the skill intermittently returns `502`, the key resolution is probably fine and the relay path is behaving differently for Node fetch:
 
-- Use `http_client: "curl"` by default to avoid an initial Node fetch failure through relays. Set it to `fetch` only when the gateway is known to support Node fetch; use `auto` when you explicitly want fetch-then-curl fallback.
+- Use `http_client: "fetch"` by default. GPT Image generation can take 20-120 seconds; if the Codex tool reports that the process is still running, keep polling instead of treating the long run as a Node fetch failure. Switch to `curl` or `auto` only after a clear `Image API fetch error (...)`, `fetch failed`, or connection error.
 - Confirm the relay supports `POST /v1/images/generations` and `POST /v1/images/edits`, not only chat / responses endpoints.
 - Confirm the relay model mapping allows `gpt-image-2`, or set `model_name` to the model name supported by the relay.
 - For nginx, use longer timeouts and a larger upload limit for image routes:

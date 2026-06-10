@@ -14,6 +14,7 @@ import {
   saveImage,
   savePrompt,
   postJson,
+  summarizeImageApiResponse,
   slugify,
 } from "./shared.js";
 
@@ -216,7 +217,7 @@ async function run() {
         userAgent: auth.userAgent,
         directApi: auth.directApi,
       },
-      apiResponse: json,
+      apiResponse: summarizeImageApiResponse(json),
     });
     return;
   }
