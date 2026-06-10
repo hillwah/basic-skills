@@ -239,6 +239,9 @@ async function run() {
         apiKeySource: auth.apiKeySource,
         baseUrlSource: auth.baseUrlSource,
         modelSource: auth.modelSource,
+        httpClient: auth.httpClient,
+        userAgent: auth.userAgent,
+        directApi: auth.directApi,
       },
       apiResponse: json,
     });

@@ -46,14 +46,14 @@ let summary;
 
 if (!gardenExplicitlyDisabled && apiKey) {
   mode = "A";
-  recommendation = gardenEnabled ? "garden" : "codex-or-env-api";
+  recommendation = gardenEnabled ? "garden" : "explicit-api";
   summary =
     "MODE A · 本地 API 生图：用 scripts/generate.js / scripts/edit.js 直接请求 GPT Image 2 兼容接口并落盘。";
 } else if (gardenEnabled && !apiKey) {
   mode = "A?";
   recommendation = "garden-missing-key";
   summary =
-    "ENABLE_GARDEN_IMAGEGEN 已开，但没有找到可用于 Images API 的 Platform API key。先配置 OPENAI_API_KEY / Codex provider env_key / Codex API-key 登录，或临时降级到 MODE B / C。";
+    "ENABLE_GARDEN_IMAGEGEN 已开，但没有找到可用于 Images API 的 API key。请配置 image_env.key / image_env.key_env / GPT_IMAGE_API_KEY / OPENAI_API_KEY，或临时降级到 MODE B / C。";
 } else {
   mode = "B-or-C";
   recommendation = "host-or-advisor";
@@ -74,6 +74,9 @@ const result = {
   api_key_source: auth.apiKeySource || null,
   base_url_source: auth.baseUrlSource,
   model_source: auth.modelSource,
+  http_client: auth.httpClient,
+  user_agent: auth.userAgent,
+  direct_api: auth.directApi,
   diagnostics: auth.diagnostics,
   env_flag_value: rawFlag || "(unset)",
   summary,
@@ -97,6 +100,9 @@ if (wantJson) {
   console.log(`${pad("image_env_path")}: ${result.image_env_path || "(none)"}`);
   console.log(`${pad("api_key_source")}: ${result.api_key_source || "(none)"}`);
   console.log(`${pad("base_url_source")}: ${result.base_url_source}`);
+  console.log(`${pad("http_client")}: ${result.http_client}`);
+  console.log(`${pad("user_agent")}: ${result.user_agent}`);
+  console.log(`${pad("direct_api")}: ${result.direct_api}`);
   console.log(`${pad("env_flag_value")}: ${result.env_flag_value}`);
   console.log("");
   console.log(result.summary);

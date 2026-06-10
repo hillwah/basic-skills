@@ -30,6 +30,7 @@ Options:
   --config <path>              image_env.json/yaml config path
   --base-url <url>             API base URL override
   --api-key-env <name>         Environment variable to read the API key from
+  --http-client <fetch|curl|auto>
   --size <WxH>                 Output size
   --n <count>                  Number of images
   --quality <level>            auto | high | medium | low
@@ -51,6 +52,7 @@ function parseCli(argv) {
     configPath: null,
     baseUrl: null,
     apiKeyEnv: null,
+    httpClient: null,
     size: null,
     n: null,
     quality: null,
@@ -110,6 +112,11 @@ function parseCli(argv) {
     if (arg === "--api-key-env") {
       cfg.apiKeyEnv = argv[++i] || null;
       if (!cfg.apiKeyEnv) throw new Error("Missing value for --api-key-env");
+      continue;
+    }
+    if (arg === "--http-client") {
+      cfg.httpClient = argv[++i] || null;
+      if (!["fetch", "curl", "auto"].includes(cfg.httpClient)) throw new Error("--http-client must be fetch, curl, or auto");
       continue;
     }
     if (arg === "--size") {
@@ -186,7 +193,7 @@ async function run() {
   const outputPath = resolveOutput(cfg.imagePath, buildDefaultImagePath("generate", nameHint));
   await ensureFilesExist([], "input");
 
-  const auth = await resolveRequestAuth({ model: cfg.model, configPath: cfg.configPath, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv });
+  const auth = await resolveRequestAuth({ model: cfg.model, configPath: cfg.configPath, baseUrl: cfg.baseUrl, apiKeyEnv: cfg.apiKeyEnv, httpClient: cfg.httpClient });
   const payload = buildPayload(cfg, prompt, auth);
   const url = buildRequestUrl(auth);
   const json = await postJson(url, payload, auth);
@@ -205,6 +212,9 @@ async function run() {
         apiKeySource: auth.apiKeySource,
         baseUrlSource: auth.baseUrlSource,
         modelSource: auth.modelSource,
+        httpClient: auth.httpClient,
+        userAgent: auth.userAgent,
+        directApi: auth.directApi,
       },
       apiResponse: json,
     });

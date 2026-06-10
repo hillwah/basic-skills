@@ -10,11 +10,11 @@
 
 ## What it does
 
-This skill is a structured prompt-engineering and image-generation pack built around the GPT Image 2 model (and OpenAI-compatible image endpoints). It only does two image tasks — `POST /images/generations` and `POST /images/edits` — but it does them in three different runtime environments without changing user-facing behavior.
+This skill is a structured prompt-engineering and image-generation pack built around the GPT Image 2 model (and OpenAI-compatible image endpoints). It only does two image tasks — `POST /images/generations` and `POST /images/edits`. When standalone third-party `image_env` config is present, it calls that gateway directly instead of detecting runtime modes first.
 
 It bundles:
 
-- A **mode-aware workflow** so the same skill works whether the agent itself owns the image API key, the host has its own image tool, or there is no image tool at all.
+- A **Direct API fast path + mode-aware workflow**: standalone third-party `image_env` calls the gateway directly; otherwise the skill can fall back to host-native image tools or prompt-advisor mode.
 - A **structured template library** of 18 categories and 79 prompt templates covering posters, UI mockups, product visuals, infographics, academic figures, technical diagrams, comics, avatars, and editing workflows.
 - **Reproducible prompt + image archival** under `garden-gpt-image-2/prompt/` and `garden-gpt-image-2/image/` with task-slug + timestamp naming.
 
@@ -22,7 +22,7 @@ It bundles:
 
 ## The three runtime modes
 
-The very first thing this skill does on any task is run a tiny detection script:
+Use standalone config first. If `$CODEX_HOME/image_env.json` or `~/.codex/image_env.json` exists, the skill calls the third-party API directly. Run the detector only when there is no standalone config or when diagnosing the environment:
 
 ```bash
 node skills/gpt-image-2/scripts/check-mode.js
@@ -44,21 +44,21 @@ In all three modes, prompt files are saved (mode A & C must save, mode B is reco
 
 ## Quick start
 
-### 0. Detect the mode (always step 0)
-
-```bash
-node skills/gpt-image-2/scripts/check-mode.js
-```
-
-The commands below (1–4) only apply in **Mode A**. Mode A first reads `OPENAI_API_KEY` / `OPENAI_BASE_URL`, then detects Codex user-level `config.toml` values such as `openai_base_url`, `model_providers.<id>.base_url`, and `env_key`. If Codex uses file-based API-key login, it also tries `$CODEX_HOME/auth.json`. ChatGPT / Codex access tokens are not treated as Images API keys.
-
-After installing the skill, initialize the standalone image API config:
+### 0. Initialize or create third-party API config
 
 ```bash
 node skills/gpt-image-2/scripts/init-image-env.js
 ```
 
-This creates `$CODEX_HOME/image_env.json`; when `CODEX_HOME` is unset, it uses `.codex/image_env.json` under the user's home directory (`~/.codex/image_env.json` on macOS / Linux, `%USERPROFILE%\.codex\image_env.json` on Windows). The file contains `model_name`, `base_url`, and `key`, which Claude, Codex, OpenCode, and other SKILL.md-compatible agents can share.
+This creates `$CODEX_HOME/image_env.json`; when `CODEX_HOME` is unset, it uses `.codex/image_env.json` under the user's home directory (`~/.codex/image_env.json` on macOS / Linux, `%USERPROFILE%\.codex\image_env.json` on Windows). The file contains `model_name`, `base_url`, `key`, `http_client`, and `user_agent`. After filling in the gateway, Claude, Codex, OpenCode, and other SKILL.md-compatible agents can share it and call the API directly.
+
+Only run this for diagnostics:
+
+```bash
+node skills/gpt-image-2/scripts/check-mode.js
+```
+
+The commands below (1–4) only apply in **Mode A / Direct API**. Mode A first reads standalone `image_env`; when that file is absent, it only reads explicit environment variables such as `GPT_IMAGE_API_KEY` / `OPENAI_API_KEY` / `OPENAI_BASE_URL`. It does not read Codex `config.toml` or `auth.json`.
 
 ### 1. Text-to-image
 
@@ -189,11 +189,11 @@ The public case library covers 18 categories, 79 templates, and 160+ generated /
 skills/gpt-image-2/
 ├── SKILL.md                       Main skill definition
 ├── scripts/
-│   ├── check-mode.js              Mode A/B/C detector (run this first)
+│   ├── check-mode.js              Mode A/B/C detector (diagnostics or no standalone config only)
 │   ├── init-image-env.js          Create an image_env.json/yaml config template
 │   ├── generate.js                Text-to-image (Mode A only)
 │   ├── edit.js                    Image edit / inpaint (Mode A only)
-│   ├── auth-resolver.js           Codex-aware API key / base URL resolver
+│   ├── auth-resolver.js           Explicit API key / base URL resolver; does not read Codex config/auth
 │   ├── shared.js                  Shared request, save, env-resolution logic
 │   └── package.json
 └── references/
@@ -221,7 +221,7 @@ skills/gpt-image-2/
 
 ## Environment variables
 
-Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gateway.env` → `~/.gateway.env` → `$CODEX_HOME/config.toml` / `~/.codex/config.toml` → file-based Codex API-key login cache.
+Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gateway.env` → `~/.gateway.env` → standalone `image_env.json/yaml`.
 
 | Variable | Required | Purpose |
 |---|---|---|
@@ -233,10 +233,12 @@ Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gate
 | `CODEX_HOME` | optional | Codex config directory; defaults to `.codex` under the user's home directory on macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | optional | Explicit `image_env.json` or `image_env.yaml` path |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | optional | Agent-agnostic image API environment variables |
+| `GPT_IMAGE_HTTP_CLIENT` | optional | `fetch` / `curl` / `auto`; default `fetch`. Use `auto` or `curl` when a relay returns 502 from Node fetch but succeeds with curl |
+| `GPT_IMAGE_USER_AGENT` | optional | API request User-Agent; default `codex` |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
 
-Codex-aware discovery reads top-level `openai_base_url`, the selected `model_provider`, and `[model_providers.<id>]` fields `base_url` and `env_key`. Only official OpenAI API hosts fall back to the Codex file-based API-key login cache. Custom gateways never read `auth.json`; set `env_key` to a gateway-specific key. If only a ChatGPT/Codex access token is available, use host-native Mode B with Codex's built-in image tool instead of direct API mode.
+The resolver only reads CLI args, environment variables, `.env` / `.gateway.env`, and standalone `image_env.json/yaml`. It does not read Codex `config.toml` / `auth.json`, and it never attempts to use Codex login caches for image API calls.
 
 If you do not want to run the init command, create `image_env.json` in the Codex config directory. The default path is `~/.codex/image_env.json` on macOS / Linux and `%USERPROFILE%\.codex\image_env.json` on Windows; when `CODEX_HOME` is set, use `$CODEX_HOME/image_env.json`.
 
@@ -248,7 +250,9 @@ Standalone `image_env.json`:
 {
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
-  "key": "sk-..."
+  "key": "sk-...",
+  "http_client": "fetch",
+  "user_agent": "codex"
 }
 ```
 
@@ -258,21 +262,40 @@ Or keep the key in an environment variable:
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
+http_client: fetch
+user_agent: codex
 ```
 
-Once `image_env` is loaded, it becomes the authoritative image API config. If `key` is empty and `key_env` does not resolve to an environment variable, the scripts ask you to configure a key instead of falling back to Codex / Claude / OpenCode login caches.
+Once `image_env` is loaded, it becomes the authoritative image API config and Direct API fast path. The scripts do not read Codex provider / config / auth caches for mode detection or connection attempts. If `key` is empty and `key_env` does not resolve to an environment variable, the scripts ask you to configure a key instead of falling back to Codex / Claude / OpenCode login caches.
 
-Codex provider config is also supported:
+### sub2api / nginx relay troubleshooting
 
-```toml
-model_provider = "custom"
+If direct `curl` works but the skill intermittently returns `502`, the key resolution is probably fine and the relay path is behaving differently for Node fetch:
 
-[model_providers.custom]
-base_url = "https://api.example.com"
-env_key = "CUSTOM_IMAGE_API_KEY"
+- Keep `http_client: "fetch"` by default to avoid trying multiple request paths on every run. Set `http_client` to `auto` or `curl` only after confirming that Node fetch returns 502 through the relay while the same curl request succeeds.
+- Confirm the relay supports `POST /v1/images/generations` and `POST /v1/images/edits`, not only chat / responses endpoints.
+- Confirm the relay model mapping allows `gpt-image-2`, or set `model_name` to the model name supported by the relay.
+- For nginx, use longer timeouts and a larger upload limit for image routes:
+
+```nginx
+location /v1/ {
+    proxy_pass http://sub2api_upstream;
+    proxy_http_version 1.1;
+
+    proxy_connect_timeout 75s;
+    proxy_send_timeout 300s;
+    proxy_read_timeout 300s;
+    send_timeout 300s;
+
+    client_max_body_size 100m;
+    proxy_request_buffering off;
+    proxy_buffering off;
+}
 ```
 
-Then set the key in your shell or `.gateway.env`:
+Text image generation has a small request body, but image edits use multipart uploads. Too-small `client_max_body_size` breaks uploads, while short `proxy_read_timeout` values often show up as 502 / 504 during long generations.
+
+If you do not want to write the key into `image_env`, set it in your shell or `.gateway.env`:
 
 ```bash
 CUSTOM_IMAGE_API_KEY=sk-...
@@ -300,7 +323,7 @@ Examples:
 
 ## Design principles
 
-1. **Mode-aware first.** The same skill never silently fails because the host doesn't have an API key — it degrades cleanly into B or C and tells the user what happened.
+1. **Standalone config first.** When `image_env` exists, call the third-party API directly; only detect modes when no standalone config is available.
 2. **Templates over freeform prompts.** 18 categories of pre-validated structured templates with explicit `{argument ...}` slots and `default` markers — much higher quality than asking "describe what you want."
 3. **Ask precisely, not vaguely.** When a template field is missing, the skill asks per field (e.g. "Who is the host? real photo, named celebrity, free description, or random?") instead of "what style do you want?"
 4. **Always archive prompts.** Even in advisor mode, the rendered prompt is saved so the work is reusable.

@@ -5,7 +5,7 @@ description: 面向 GPT Image 2 的图像生成 / 编辑技能。可在 3 种环
 
 # GPT Image 2
 
-这是一个面向 GPT Image 2 的聚焦型技能，在 3 种运行环境下都能用，但行为差异显著。**第一步必须先确定当前运行模式**。
+这是一个面向 GPT Image 2 的聚焦型技能，在 3 种运行环境下都能用。**如果已配置独立第三方 `image_env`，默认直接调用第三方 API，不再先做 A/B/C 模式判断**；只有没有独立图片 API 配置时，才判断是否委托宿主图像工具或退化为 prompt 顾问。
 
 它只做两类图像任务：
 
@@ -17,23 +17,30 @@ description: 面向 GPT Image 2 的图像生成 / 编辑技能。可在 3 种环
 - 一级：分类目录
 - 二级：单模板 Markdown 文件
 
-## 运行模式（必读，做任何事之前先确定）
+## 运行模式（必读）
 
-本 Skill 自带一个轻量探测脚本，先跑一次，再根据结果决定怎么干活：
+优先规则：
+
+1. 如果加载到独立 `image_env.json` / `image_env.yaml`，并且其中配置了 `base_url` 与 `key` 或 `key_env`，直接视为 **Direct API / Mode A**：渲染 prompt 后立即调用 `generate.js` / `edit.js`。不要先跑 `check-mode.js`，不要尝试 B/C。
+2. 如果没有独立 `image_env`，但用户显式要求诊断或不确定当前环境，才运行轻量探测脚本：
 
 ```bash
 node skills/gpt-image-2/scripts/check-mode.js
 # 想拿结构化结果给上层程序用：
 node skills/gpt-image-2/scripts/check-mode.js --json
-# 初始化独立图片 API 配置：
+```
+
+初始化独立图片 API 配置：
+
+```bash
 node skills/gpt-image-2/scripts/init-image-env.js
 ```
 
-输出会给出 `mode = A` / `A?` / `B-or-C` 以及 `recommendation`。三个模式定义如下：
+`check-mode.js` 输出会给出 `mode = A` / `A?` / `B-or-C` 以及 `recommendation`。三个模式定义如下：
 
 ### Mode A · 本地 API 生图
 
-**触发条件**：存在可用于 OpenAI 兼容 Images API 的 API key。来源可以是 `OPENAI_API_KEY`、Codex `config.toml` 中 provider 的 `env_key`、`CODEX_API_KEY`，或 Codex file-based API-key 登录缓存。`ENABLE_GARDEN_IMAGEGEN=0` / `false` 可显式禁用本地 API 生图。
+**触发条件**：存在可用于 OpenAI 兼容 Images API 的显式 API key。独立 `image_env` 是最快路径；来源也可以是 `GPT_IMAGE_API_KEY` / `OPENAI_API_KEY` / `key_env` 指向的环境变量。**不要读取 Codex `config.toml` 或 `auth.json`，也不要尝试使用 Codex 登录缓存。** `ENABLE_GARDEN_IMAGEGEN=0` / `false` 可显式禁用非 `image_env` 的本地 API 生图。
 
 **行为**：完整端到端跑通"选模板 → 写 prompt → 调用脚本 → 出图落盘"。
 
@@ -80,7 +87,8 @@ node skills/gpt-image-2/scripts/init-image-env.js
 
 ### 模式不确定时
 
-- 如果你判断不清自己是 B 还是 C，**直接问用户一句**："是用你环境里的图像工具出图，还是只要我写好提示词？"
+- 如果已配置独立 `image_env`，不要问 B/C，直接调用第三方 API。
+- 如果没有独立 `image_env`，且判断不清自己是 B 还是 C，**直接问用户一句**："是用你环境里的图像工具出图，还是只要我写好提示词？"
 - Mode A 调脚本失败（401 / 网络 / 配额）→ 报错并询问"切到 B / C 吗？"
 
 ## 用户输入工具
@@ -93,12 +101,12 @@ node skills/gpt-image-2/scripts/init-image-env.js
 
 ## 技能结构
 
-- `scripts/check-mode.js`：**先跑这个**，检测运行模式（A / B / C）
+- `scripts/check-mode.js`：仅在没有独立 `image_env` 或需要诊断时运行，检测运行模式（A / B / C）
 - `scripts/init-image-env.js`：创建 agent-agnostic 的 `image_env.json` 模板
 - `scripts/generate.js`：文本生图（仅 Mode A 使用）
 - `scripts/edit.js`：基于原图 / 遮罩改图（仅 Mode A 使用）
 - `scripts/shared.js`：共享请求、保存、环境变量读取逻辑
-- `scripts/auth-resolver.js`：Codex-aware API key / base URL 解析逻辑
+- `scripts/auth-resolver.js`：显式 image API key / base URL 解析逻辑；不会读取 Codex config/auth
 - `references/`：分层结构化提示词模板（A / B / C 三模式都用）
 
 ## 环境变量
@@ -111,19 +119,21 @@ node skills/gpt-image-2/scripts/init-image-env.js
 4. `<cwd>/.gateway.env`
 5. `~/.gateway.env`
 6. 独立 `image_env.json` / `image_env.yaml`（优先 `$CODEX_HOME/image_env.json`；未设置时使用当前系统用户主目录下的 `.codex/image_env.json`）
-7. `$CODEX_HOME/config.toml` 或 `~/.codex/config.toml`
-8. `$CODEX_HOME/auth.json` 或 `~/.codex/auth.json` 中的 file-based API-key 登录缓存（仅官方 OpenAI API 域名）
+
+不会读取 `$CODEX_HOME/config.toml` / `~/.codex/config.toml`，也不会读取 `$CODEX_HOME/auth.json` / `~/.codex/auth.json`。Codex 环境不允许 skill 把本地登录凭据拿去尝试连接第三方接口；第三方网关必须使用 `image_env.key`、`key_env` 或显式环境变量。
 
 核心变量：
 
 - `ENABLE_GARDEN_IMAGEGEN` — **模式开关**。`0` / `false` 等假值会显式禁用 Mode A；`1` / `true` / `yes` / `on` 会强制尝试 Mode A。
 - `OPENAI_API_KEY` — Mode A 可用的首选 API key；B / C 不需要。
-- `OPENAI_BASE_URL` — 默认 `https://api.openai.com/v1`，可指向第三方兼容网关；如果不是以 `/v1` 结尾，脚本会自动追加 `/v1` 以兼容 Codex provider 写法。
+- `OPENAI_BASE_URL` — 默认 `https://api.openai.com/v1`，可指向第三方兼容网关；如果不是以 `/v1` 结尾，脚本会自动追加 `/v1`。
 - `OPENAI_IMAGE_MODEL` — 默认 `gpt-image-2`，可换成网关支持的型号（如 `gpt-image-1` / `dall-e-3`）。
 - `OPENAI_IMAGE_AUTO_APPEND_V1` — 默认开启；设为 `0` / `false` / `no` / `off` 可关闭自动追加 `/v1`。
 - `CODEX_HOME` — Codex 配置目录，未设置时默认用户主目录下的 `.codex`（macOS / Linux: `~/.codex`；Windows: `%USERPROFILE%\.codex`）。
 - `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` — 显式指定 `image_env.json` 或 `image_env.yaml` 路径。
 - `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` — agent-agnostic 环境变量，优先级高于 `image_env`。
+- `GPT_IMAGE_HTTP_CLIENT` — `fetch` / `curl` / `auto`，默认 `fetch`。中转网关下 Node fetch 502 但 curl 成功时，推荐设为 `auto` 或 `curl`。
+- `GPT_IMAGE_USER_AGENT` — API 请求的 User-Agent，默认 `codex`。
 
 独立配置文件：
 
@@ -131,7 +141,9 @@ node skills/gpt-image-2/scripts/init-image-env.js
 {
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
-  "key": "sk-..."
+  "key": "sk-...",
+  "http_client": "fetch",
+  "user_agent": "codex"
 }
 ```
 
@@ -152,29 +164,20 @@ Codex 用户优先路径为 `$CODEX_HOME/image_env.json`。未设置 `CODEX_HOME
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
+http_client: fetch
+user_agent: codex
 ```
 
-一旦加载到 `image_env`，该文件会作为图片 API 的权威配置；若 `key` 为空且 `key_env` 未提供可用环境变量，脚本会提示先配置 key，不会回退到 Codex / Claude / OpenCode 的登录缓存。
+一旦加载到 `image_env`，该文件会作为图片 API 的权威配置和 Direct API 快路径；脚本不会读取 Codex provider / config / auth 缓存做模式判断或连接尝试。若 `key` 为空且 `key_env` 未提供可用环境变量，脚本会提示先配置 key，不会回退到 Codex / Claude / OpenCode 的登录缓存。
 
-Codex 配置识别：
+中转网关排查：
 
-- 读取顶层 `openai_base_url`。
-- 读取当前 `model_provider` 对应的 `[model_providers.<id>]`，支持 `base_url` 和 `env_key`。
-- 只有 `api.openai.com` 或 `*.api.openai.com` 这类官方 OpenAI API 域名，才会回退读取 Codex file-based API-key 登录缓存。
-- 自定义网关不会读取 `auth.json`；请在 provider 中设置 `env_key`，并通过环境变量或 `.gateway.env` 提供该网关专用 key。
-- ChatGPT / Codex access token 不会被当作 Images API key 使用；如果当前 Codex 宿主自带 `$imagegen`，应走 Mode B 让宿主工具使用 Codex 额度。
+- 纯文本生图支持 `http_client`：`fetch` 使用 Node fetch，`curl` 使用本机 curl，`auto` 先 fetch 失败后再 curl。默认建议 `fetch`，避免每次额外尝试多种链路。
+- 如果 sub2api / nginx 出现 502，但同参数 curl 成功，优先在 `image_env` 中设 `"http_client": "auto"`。
+- 确认网关支持 `/v1/images/generations` 和 `/v1/images/edits`，且模型映射允许 `gpt-image-2`。
+- nginx 反代图片接口建议提高 `proxy_read_timeout` / `proxy_send_timeout`，并为图片编辑提高 `client_max_body_size`。
 
-自定义网关推荐配置：
-
-```toml
-model_provider = "custom"
-
-[model_providers.custom]
-base_url = "https://api.example.com"
-env_key = "CUSTOM_IMAGE_API_KEY"
-```
-
-然后在 shell 或 `.gateway.env` 中设置：
+自定义网关推荐使用 `image_env` 或环境变量显式配置：
 
 ```bash
 CUSTOM_IMAGE_API_KEY=sk-...
@@ -237,13 +240,19 @@ Mode B 由宿主图像工具决定保存方式；Mode C 不产生图片。
 
 ## 快速用法
 
-### 0. 检测运行模式（**任何任务的第一步**）
+### 0. 配置优先级
+
+```bash
+node skills/gpt-image-2/scripts/init-image-env.js
+```
+
+如果已存在 `$CODEX_HOME/image_env.json` 或 `~/.codex/image_env.json`，直接使用它调用第三方 API；不需要每次运行 `check-mode.js`。只有排查环境或没有独立配置时，才运行：
 
 ```bash
 node skills/gpt-image-2/scripts/check-mode.js
 ```
 
-输出会告诉你当前是 Mode A / B / C，决定后续是否调用 `generate.js` / `edit.js`。下面 1~4 仅在 **Mode A** 下使用。
+下面 1~4 仅在 **Mode A / Direct API** 下使用。
 
 ### 1. 文本生图（Mode A）
 
@@ -522,7 +531,7 @@ CS / CV / ML 方向：
 
 无论 A / B / C，**前 6 步是共用的**；区别只在第 7-8 步如何"出图"。
 
-1. **跑 `check-mode.js` 确定模式**（A / B / C）。
+1. **先看是否有独立 `image_env`**：有则直接进入 Mode A / Direct API；没有且环境不确定时才跑 `check-mode.js`。
 2. 判断任务是生图还是改图。
 3. 识别它属于哪个分类目录（参考下方"模板索引"）。
 4. 只读取对应的具体模板文件，**不要一次读整个 references/**。

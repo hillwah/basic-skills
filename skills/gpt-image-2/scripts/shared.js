@@ -2,6 +2,7 @@ import path from "node:path";
 import process from "node:process";
 import { homedir } from "node:os";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
 import { resolveImageApiAuth } from "./auth-resolver.js";
 
 export const DEFAULT_IMAGE_DIR = "garden-gpt-image-2/image";
@@ -147,36 +148,125 @@ export function requireApiKey(auth) {
   const apiKey = auth?.apiKey || process.env.OPENAI_API_KEY;
   if (!apiKey) {
     const details = auth?.diagnostics?.length ? ` ${auth.diagnostics.join(" ")}` : "";
-    throw new Error(`OpenAI-compatible API key is required. Set OPENAI_API_KEY, configure a Codex provider env_key, or sign in to Codex with API-key auth.${details}`);
+    throw new Error(`OpenAI-compatible API key is required. Set image_env.key, image_env.key_env, GPT_IMAGE_API_KEY, or OPENAI_API_KEY explicitly.${details}`);
   }
   return apiKey;
 }
 
-export async function postJson(url, payload, auth) {
-  const apiKey = requireApiKey(auth);
+function requestUserAgent(auth) {
+  return auth?.userAgent || process.env.GPT_IMAGE_USER_AGENT || "codex";
+}
+
+function formatBodySnippet(text) {
+  const value = String(text || "").trim();
+  if (!value) return "";
+  return value.length > 2000 ? `${value.slice(0, 2000)}...` : value;
+}
+
+function parseJsonResponse(text, url, client) {
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    throw new Error(`Image API ${client} response was not valid JSON for ${url}: ${formatBodySnippet(text)}`);
+  }
+}
+
+function runCurlJson(url, payload, apiKey, userAgent) {
+  return new Promise((resolve, reject) => {
+    const args = [
+      "--silent",
+      "--show-error",
+      "--fail-with-body",
+      "-X",
+      "POST",
+      url,
+      "-H",
+      `Authorization: Bearer ${apiKey}`,
+      "-H",
+      "Content-Type: application/json",
+      "-H",
+      `User-Agent: ${userAgent}`,
+      "--data-binary",
+      "@-",
+    ];
+    const child = spawn("curl", args, { stdio: ["pipe", "pipe", "pipe"] });
+    let stdout = "";
+    let stderr = "";
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk;
+    });
+    child.stderr.on("data", (chunk) => {
+      stderr += chunk;
+    });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve(stdout);
+        return;
+      }
+      reject(new Error(`Image API curl error (${code}) for ${url}: ${formatBodySnippet(stderr || stdout)}`));
+    });
+    child.stdin.end(JSON.stringify(payload));
+  });
+}
+
+async function postJsonFetch(url, payload, apiKey, userAgent) {
   const res = await fetch(url, {
     method: "POST",
     headers: {
       authorization: `Bearer ${apiKey}`,
       "content-type": "application/json",
+      "user-agent": userAgent,
     },
     body: JSON.stringify(payload),
   });
 
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`Image API error (${res.status}): ${text}`);
+    throw new Error(`Image API fetch error (${res.status}) for ${url}: ${formatBodySnippet(text)}`);
   }
 
   return res.json();
 }
 
+export async function postJson(url, payload, auth) {
+  const apiKey = requireApiKey(auth);
+  const userAgent = requestUserAgent(auth);
+  const client = String(auth?.httpClient || "fetch").toLowerCase();
+
+  if (client === "curl") {
+    const text = await runCurlJson(url, payload, apiKey, userAgent);
+    return parseJsonResponse(text, url, "curl");
+  }
+
+  if (client === "auto") {
+    try {
+      return await postJsonFetch(url, payload, apiKey, userAgent);
+    } catch (error) {
+      const fetchMessage = error instanceof Error ? error.message : String(error);
+      try {
+        const text = await runCurlJson(url, payload, apiKey, userAgent);
+        return parseJsonResponse(text, url, "curl");
+      } catch (curlError) {
+        const curlMessage = curlError instanceof Error ? curlError.message : String(curlError);
+        throw new Error(`Image API auto mode failed. fetch: ${fetchMessage} curl: ${curlMessage}`);
+      }
+    }
+  }
+
+  return postJsonFetch(url, payload, apiKey, userAgent);
+}
+
 export async function postMultipart(url, form, auth) {
   const apiKey = requireApiKey(auth);
+  const userAgent = requestUserAgent(auth);
   const res = await fetch(url, {
     method: "POST",
     headers: {
       authorization: `Bearer ${apiKey}`,
+      "user-agent": userAgent,
     },
     body: form,
   });
@@ -189,8 +279,12 @@ export async function postMultipart(url, form, auth) {
   return res.json();
 }
 
-export async function fetchBytesFromUrl(url) {
-  const res = await fetch(url);
+export async function fetchBytesFromUrl(url, auth = {}) {
+  const res = await fetch(url, {
+    headers: {
+      "user-agent": requestUserAgent(auth),
+    },
+  });
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Failed to download generated image (${res.status}): ${text}`);
