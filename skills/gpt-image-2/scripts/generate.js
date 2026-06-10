@@ -30,7 +30,7 @@ Options:
   --config <path>              image_env.json/yaml config path
   --base-url <url>             API base URL override
   --api-key-env <name>         Environment variable to read the API key from
-  --http-client <fetch|curl|auto>
+  --http-client <curl|fetch|auto>
   --size <WxH>                 Output size
   --n <count>                  Number of images
   --quality <level>            auto | high | medium | low
@@ -116,7 +116,7 @@ function parseCli(argv) {
     }
     if (arg === "--http-client") {
       cfg.httpClient = argv[++i] || null;
-      if (!["fetch", "curl", "auto"].includes(cfg.httpClient)) throw new Error("--http-client must be fetch, curl, or auto");
+      if (!["curl", "fetch", "auto"].includes(cfg.httpClient)) throw new Error("--http-client must be curl, fetch, or auto");
       continue;
     }
     if (arg === "--size") {

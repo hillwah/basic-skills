@@ -48,6 +48,13 @@ node skills/gpt-image-2/scripts/init-image-env.js
 - prompt 默认落盘到 `garden-gpt-image-2/prompt/`、图片落盘到 `garden-gpt-image-2/image/`。
 - 这是最强的模式：你是图像工具的"持有者"。
 
+**Codex 沙箱网络权限规则**：
+
+- `generate.js` / `edit.js` 会请求外部图片 API；在 Codex 的网络受限沙箱中，首次执行就必须按权限流程申请联网运行。
+- 不要先用普通沙箱执行一次再重试；这只会产生一次必然失败的网络错误。
+- 当通过 Codex `exec_command` 调用 Direct API 生图 / 改图脚本时，直接使用 `sandbox_permissions: "require_escalated"`，并在 `justification` 中说明"需要联网请求用户显式配置的图片 API"。
+- 这不是绕过审批；用户仍可拒绝。若用户拒绝联网权限，则降级到 Mode B / C。
+
 ### Mode B · Host-Native 委托宿主出图
 
 **触发条件**：未启用 Garden（`ENABLE_GARDEN_IMAGEGEN` 未设置 / 为假），但**当前宿主 Agent 自带图像生成工具或图像 MCP**。
@@ -132,7 +139,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
 - `CODEX_HOME` — Codex 配置目录，未设置时默认用户主目录下的 `.codex`（macOS / Linux: `~/.codex`；Windows: `%USERPROFILE%\.codex`）。
 - `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` — 显式指定 `image_env.json` 或 `image_env.yaml` 路径。
 - `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` — agent-agnostic 环境变量，优先级高于 `image_env`。
-- `GPT_IMAGE_HTTP_CLIENT` — `fetch` / `curl` / `auto`，默认 `fetch`。中转网关下 Node fetch 502 但 curl 成功时，推荐设为 `auto` 或 `curl`。
+- `GPT_IMAGE_HTTP_CLIENT` — `curl` / `fetch` / `auto`，默认 `curl`。中转网关下 Node fetch 容易 502 时，直接使用本机 curl，避免先失败一次。
 - `GPT_IMAGE_USER_AGENT` — API 请求的 User-Agent，默认 `codex`。
 
 独立配置文件：
@@ -142,7 +149,7 @@ node skills/gpt-image-2/scripts/init-image-env.js
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "fetch",
+  "http_client": "curl",
   "user_agent": "codex"
 }
 ```
@@ -164,7 +171,7 @@ Codex 用户优先路径为 `$CODEX_HOME/image_env.json`。未设置 `CODEX_HOME
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: fetch
+http_client: curl
 user_agent: codex
 ```
 
@@ -172,8 +179,8 @@ user_agent: codex
 
 中转网关排查：
 
-- 纯文本生图支持 `http_client`：`fetch` 使用 Node fetch，`curl` 使用本机 curl，`auto` 先 fetch 失败后再 curl。默认建议 `fetch`，避免每次额外尝试多种链路。
-- 如果 sub2api / nginx 出现 502，但同参数 curl 成功，优先在 `image_env` 中设 `"http_client": "auto"`。
+- 纯文本生图支持 `http_client`：`curl` 使用本机 curl，`fetch` 使用 Node fetch，`auto` 先 fetch 失败后再 curl。默认建议 `curl`，避免 Node fetch 在部分中转网关上先失败一次。
+- 如果确认网关兼容 Node fetch，可以在 `image_env` 中设 `"http_client": "fetch"`；如果需要自动回退，可设 `"http_client": "auto"`。
 - 确认网关支持 `/v1/images/generations` 和 `/v1/images/edits`，且模型映射允许 `gpt-image-2`。
 - nginx 反代图片接口建议提高 `proxy_read_timeout` / `proxy_send_timeout`，并为图片编辑提高 `client_max_body_size`。
 

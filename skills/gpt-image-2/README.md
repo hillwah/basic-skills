@@ -69,6 +69,8 @@ node skills/gpt-image-2/scripts/generate.js \
   --quality high
 ```
 
+Codex network sandbox note: `generate.js` / `edit.js` call an external image API. When a Codex Agent invokes these scripts, it should request network permission on the first run instead of trying once in the normal sandbox and then retrying. The user can still deny network permission; if denied, fall back to host-native generation or prompt-advisor mode.
+
 ### 2. Generate from a saved prompt file
 
 ```bash
@@ -233,7 +235,7 @@ Read in this order: CLI args → `process.env` → `<cwd>/.env` → `<cwd>/.gate
 | `CODEX_HOME` | optional | Codex config directory; defaults to `.codex` under the user's home directory on macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | optional | Explicit `image_env.json` or `image_env.yaml` path |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | optional | Agent-agnostic image API environment variables |
-| `GPT_IMAGE_HTTP_CLIENT` | optional | `fetch` / `curl` / `auto`; default `fetch`. Use `auto` or `curl` when a relay returns 502 from Node fetch but succeeds with curl |
+| `GPT_IMAGE_HTTP_CLIENT` | optional | `curl` / `fetch` / `auto`; default `curl`. Use local curl by default when relays do not like Node fetch |
 | `GPT_IMAGE_USER_AGENT` | optional | API request User-Agent; default `codex` |
 
 The skill is wire-compatible with the OpenAI image API and is **not** hard-coded to any third-party gateway.
@@ -251,7 +253,7 @@ Standalone `image_env.json`:
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "fetch",
+  "http_client": "curl",
   "user_agent": "codex"
 }
 ```
@@ -262,7 +264,7 @@ Or keep the key in an environment variable:
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: fetch
+http_client: curl
 user_agent: codex
 ```
 
@@ -272,7 +274,7 @@ Once `image_env` is loaded, it becomes the authoritative image API config and Di
 
 If direct `curl` works but the skill intermittently returns `502`, the key resolution is probably fine and the relay path is behaving differently for Node fetch:
 
-- Keep `http_client: "fetch"` by default to avoid trying multiple request paths on every run. Set `http_client` to `auto` or `curl` only after confirming that Node fetch returns 502 through the relay while the same curl request succeeds.
+- Use `http_client: "curl"` by default to avoid an initial Node fetch failure through relays. Set it to `fetch` only when the gateway is known to support Node fetch; use `auto` when you explicitly want fetch-then-curl fallback.
 - Confirm the relay supports `POST /v1/images/generations` and `POST /v1/images/edits`, not only chat / responses endpoints.
 - Confirm the relay model mapping allows `gpt-image-2`, or set `model_name` to the model name supported by the relay.
 - For nginx, use longer timeouts and a larger upload limit for image routes:

@@ -234,7 +234,7 @@ async function postJsonFetch(url, payload, apiKey, userAgent) {
 export async function postJson(url, payload, auth) {
   const apiKey = requireApiKey(auth);
   const userAgent = requestUserAgent(auth);
-  const client = String(auth?.httpClient || "fetch").toLowerCase();
+  const client = String(auth?.httpClient || "curl").toLowerCase();
 
   if (client === "curl") {
     const text = await runCurlJson(url, payload, apiKey, userAgent);

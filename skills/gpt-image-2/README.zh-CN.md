@@ -69,6 +69,8 @@ node skills/gpt-image-2/scripts/generate.js \
   --quality high
 ```
 
+Codex 网络沙箱说明：`generate.js` / `edit.js` 会请求外部图片 API。Codex Agent 调用这些脚本时应第一次就按权限流程申请联网运行，而不是先在普通沙箱中试一次。用户仍可拒绝联网权限；拒绝后应降级到宿主出图或 prompt 顾问模式。
+
 ### 2. 用提示词文件生图
 
 ```bash
@@ -233,7 +235,7 @@ skills/gpt-image-2/
 | `CODEX_HOME` | 可选 | Codex 配置目录；默认是用户主目录下的 `.codex`，兼容 macOS / Linux / Windows |
 | `GPT_IMAGE_CONFIG` / `GPT_IMAGE_2_CONFIG` | 可选 | 显式指定 `image_env.json` 或 `image_env.yaml` 路径 |
 | `GPT_IMAGE_BASE_URL` / `GPT_IMAGE_MODEL` / `GPT_IMAGE_API_KEY` | 可选 | 跨 Claude / Codex / OpenCode 的图片 API 环境变量 |
-| `GPT_IMAGE_HTTP_CLIENT` | 可选 | `fetch` / `curl` / `auto`；默认 `fetch`。如果中转网关下 Node fetch 502 但 curl 成功，设为 `auto` 或 `curl` |
+| `GPT_IMAGE_HTTP_CLIENT` | 可选 | `curl` / `fetch` / `auto`；默认 `curl`。中转网关下 Node fetch 容易 502 时，直接使用本机 curl |
 | `GPT_IMAGE_USER_AGENT` | 可选 | API 请求的 User-Agent，默认 `codex` |
 
 默认实现严格按 OpenAI 兼容接口工作，**不绑定**任何第三方网关。
@@ -249,7 +251,7 @@ skills/gpt-image-2/
   "model_name": "gpt-image-2",
   "base_url": "https://api.example.com",
   "key": "sk-...",
-  "http_client": "fetch",
+  "http_client": "curl",
   "user_agent": "codex"
 }
 ```
@@ -260,7 +262,7 @@ skills/gpt-image-2/
 model_name: gpt-image-2
 base_url: https://api.example.com
 key_env: CUSTOM_IMAGE_API_KEY
-http_client: fetch
+http_client: curl
 user_agent: codex
 ```
 
@@ -270,7 +272,7 @@ user_agent: codex
 
 如果 `curl` 能通，但 skill 内请求偶发 `502`，通常不是 key 读取问题，而是网关链路差异：
 
-- 默认保留 `http_client: "fetch"`，避免每次尝试多条请求链路。只有确认 Node fetch 经中转 502 而同参数 curl 成功时，再把 `image_env.json` 里的 `http_client` 设为 `auto` 或 `curl`。
+- 默认使用 `http_client: "curl"`，避免 Node fetch 经中转网关先失败一次。只有确认网关兼容 Node fetch 时，才改成 `fetch`；需要自动回退时可设为 `auto`。
 - 确认 sub2api 支持 `POST /v1/images/generations` 和 `POST /v1/images/edits`，而不是只转发 chat / responses 端点。
 - 确认模型映射里允许 `gpt-image-2`，或把 `model_name` 改成 sub2api 实际支持的模型名。
 - nginx 建议为图片接口放宽超时和体积限制：
