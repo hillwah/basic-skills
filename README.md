@@ -261,7 +261,7 @@ Links: [README](./skills/kb-retriever/README.md) · [SKILL.md](./skills/kb-retri
 Highlights:
 
 - **Article first** — the focus is the *article*: better reading, better pacing, better aesthetics. Delivery is a self-contained file (HTML, optional PDF), but that's a delivery detail, not the goal
-- **Reacticle component protocol** — prose-first semantic components (Hero / Lead / Section / Quote / Callout / Image / Formula / CodeBlock / Table…) plus a theme-token-only `Raw` free layer
+- **Reacticle component protocol** — prose-first semantic components (Hero / Lead / Section / Quote / Callout / Image / Formula / CodeBlock / Table…) plus a theme-token-only `Raw` free layer; the underlying React library lives at [`ConardLi/reacticle`](https://github.com/ConardLi/reacticle)
 - **10 article types with bundled retention ratios** — `longform · ~100%` / `tutorial · ~90%` / `full-report · ~80%` / `explainer · ~80%` / `dialogue · ~80%` / `review · ~70%` / `essay · ~70%` / `briefing · ~50%` / `visual-essay · ~40%` / `interactive-explainer · ~25% excerpt + 75% AI-rebuild`
 - **11 authoring theme profiles** (`tufte`, `press`, `bayer`, `bodoni`, `vignelli`, `sottsass`, `freddie`, `andy`, `fuller`, `knuth`, `shannon`) — each is a Markdown contract for the agent rather than a CSS file
 - **Hard collaboration checkpoints** with item-by-item decision capture (no silent defaults), plus a 3:4 book-style cover, default-on TOC, and language-aware translation step
