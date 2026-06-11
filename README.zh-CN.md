@@ -501,6 +501,21 @@ npm run validate  # 跑一遍和 PR CI 完全一样的检查
 
 ---
 
+## Connect
+
+| 平台 | 账号名称 | 链接 |
+| --- | --- | --- |
+| X/Twitter | code秘密花园 | https://x.com/GardenConardLi  |
+| B 站 | code秘密花园 | https://space.bilibili.com/474921808 |
+| 抖音 | code秘密花园 | https://v.douyin.com/i5b33Xfv/ |
+| YouTube | code秘密花园 | https://www.youtube.com/@garden-conard |
+| 小红书 | code秘密花园 | https://www.xiaohongshu.com/user/profile/5af45e78f7e8b903d6e04618 |
+| 公众号 | code秘密花园 | https://cdn.jsdelivr.net/gh/ConardLi/easy-dataset@main/public/imgs/weichat.jpg |
+| GitHub | ConardLi | https://github.com/ConardLi |
+| 个人网站 | Easy AI | https://mmh1.top |
+
+---
+
 ## 许可证
 
 [MIT](./LICENSE) © [ConardLi](https://github.com/ConardLi)
